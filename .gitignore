@@ -1,0 +1,17 @@
+# OpenClaw personal workspace files
+MEMORY.md
+SOUL.md
+AGENTS.md
+USER.md
+IDENTITY.md
+TOOLS.md
+HEARTBEAT.md
+BOOTSTRAP.md
+memory/
+.openclaw/
+
+# .NET build artifacts
+**/bin/
+**/obj/
+*.user
+.vs/
