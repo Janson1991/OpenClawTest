@@ -3,8 +3,9 @@ namespace SkuSearch.Application.DTOs;
 public record SearchRequest(
     string  Query,
     int     TopK        = 20,
-    string? Category    = null,
-    float   MinScore    = 0.55f
+    int?    ShopId      = null,    // 按店铺过滤
+    int?    UCatId1     = null,    // 按一级分类过滤
+    float   MinScore    = 0.50f
 );
 
 public record SearchResponse(
@@ -15,15 +16,21 @@ public record SearchResponse(
 );
 
 public record SkuSearchItem(
-    long    Id,
-    string  SkuCode,
-    string  Name,
-    string? Category,
-    string? Brand,
-    decimal Price,
-    string? ImageUrl,
-    float   Score,          // 相似度得分 0~1
-    string  Source          // "vector" | "keyword" | "merged"
+    long     RecordId,
+    string   GoodsId,
+    string   SkuId,
+    int      ShopId,
+    string?  Name,
+    string?  SpuItemName,
+    string?  BrandName,
+    decimal? PriceSale,
+    decimal? PriceMarket,
+    string?  GoodsType,
+    string?  CheckStatus,
+    byte     State,
+    byte     AutoState,
+    float    Score,           // 相似度得分 0~1
+    string   Source           // "vector" | "keyword" | "merged"
 );
 
 public record ParsedQuery(

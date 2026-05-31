@@ -35,21 +35,22 @@ public class SearchController : ControllerBase
     }
 
     /// <summary>
-    /// 快速搜索（GET，用于简单场景）
+    /// 快速搜索（GET）
     /// </summary>
     [HttpGet]
     [ProducesResponseType(typeof(SearchResponse), 200)]
     public async Task<IActionResult> QuickSearch(
         [FromQuery] string q,
-        [FromQuery] int    top      = 20,
-        [FromQuery] string? category = null,
+        [FromQuery] int    top       = 20,
+        [FromQuery] int?   shopId    = null,
+        [FromQuery] int?   uCatId1   = null,
         CancellationToken ct = default)
     {
         if (string.IsNullOrWhiteSpace(q))
             return BadRequest(new { error = "参数 q 不能为空" });
 
         var result = await _search.SearchAsync(
-            new SearchRequest(q, top, category), ct);
+            new SearchRequest(q, top, shopId, uCatId1), ct);
         return Ok(result);
     }
 }

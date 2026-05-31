@@ -14,10 +14,10 @@ public class QdrantVectorSearchRepository : IVectorSearchRepository
     public QdrantVectorSearchRepository(QdrantClient qdrant) => _qdrant = qdrant;
 
     public async Task<List<SkuSearchItem>> SearchAsync(
-        float[] embedding, int topK, string? category,
+        float[] embedding, int topK, int? shopId,
         float scoreThreshold, CancellationToken ct = default)
     {
-        Filter? filter = category != null
+        Filter? filter = shopId != null
             ? new Filter
               {
                   Must =
@@ -26,8 +26,8 @@ public class QdrantVectorSearchRepository : IVectorSearchRepository
                       {
                           Field = new FieldCondition
                           {
-                              Key   = "category",
-                              Match = new Match { Keyword = category }
+                              Key   = "shop_id",
+                              Match = new MatchInteger { Integer = shopId.Value }
                           }
                       }
                   }
@@ -44,15 +44,21 @@ public class QdrantVectorSearchRepository : IVectorSearchRepository
             cancellationToken: ct);
 
         return hits.Select(h => new SkuSearchItem(
-            Id:       (long)h.Id.Num,
-            SkuCode:  h.Payload["sku_code"].StringValue,
-            Name:     h.Payload["name"].StringValue,
-            Category: h.Payload["category"].StringValue,
-            Brand:    h.Payload["brand"].StringValue,
-            Price:    (decimal)h.Payload["price"].DoubleValue,
-            ImageUrl: h.Payload["image_url"].StringValue,
-            Score:    h.Score,
-            Source:   "vector"
+            RecordId:    (long)h.Id.Num,
+            GoodsId:     h.Payload["goods_id"].StringValue,
+            SkuId:       h.Payload["sku_id"].StringValue,
+            ShopId:      (int)h.Payload["shop_id"].IntegerValue,
+            Name:        h.Payload["name"].StringValue,
+            SpuItemName: h.Payload["spu_item_name"].StringValue,
+            BrandName:   h.Payload["brand_name"].StringValue,
+            PriceSale:   (decimal)h.Payload["price_sale"].DoubleValue,
+            PriceMarket: (decimal)h.Payload["price_market"].DoubleValue,
+            GoodsType:   h.Payload["goods_type"].StringValue,
+            CheckStatus: h.Payload["check_status"].StringValue,
+            State:       (byte)h.Payload["state"].IntegerValue,
+            AutoState:   (byte)h.Payload["auto_state"].IntegerValue,
+            Score:       h.Score,
+            Source:      "vector"
         )).ToList();
     }
 }
@@ -64,7 +70,7 @@ public class MySqlKeywordSearchRepository : IKeywordSearchRepository
     public MySqlKeywordSearchRepository(AppDbContext db) => _db = db;
 
     public async Task<List<SkuSearchItem>> SearchAsync(
-        ParsedQuery parsed, int topK, string? category,
+        ParsedQuery parsed, int topK, int? shopId,
         CancellationToken ct = default)
     {
         var allKeywords = parsed.Keywords
@@ -75,42 +81,63 @@ public class MySqlKeywordSearchRepository : IKeywordSearchRepository
 
         if (!allKeywords.Any()) return [];
 
-        // MySQL BOOLEAN 全文搜索：每个词加 * 做前缀匹配
+        // skudetail2 的 name 和 spu_item_name 做 ngram 全文搜索
         var searchStr = string.Join(" ", allKeywords.Select(k => $"+{k}*"));
 
-        var sql = category != null
-            ? @"SELECT id, sku_code, name, category, brand, price, image_url,
-                       MATCH(name, description, tags) AGAINST({0} IN BOOLEAN MODE) AS score
-                FROM skus
-                WHERE MATCH(name, description, tags) AGAINST({0} IN BOOLEAN MODE)
-                  AND category = {1}
-                  AND is_active = 1
-                ORDER BY score DESC LIMIT {2}"
-            : @"SELECT id, sku_code, name, category, brand, price, image_url,
-                       MATCH(name, description, tags) AGAINST({0} IN BOOLEAN MODE) AS score
-                FROM skus
-                WHERE MATCH(name, description, tags) AGAINST({0} IN BOOLEAN MODE)
-                  AND is_active = 1
-                ORDER BY score DESC LIMIT {1}";
+        // 动态拼接 SQL（避免 SQL 注入，参数化搜索词）
+        var sql = shopId != null
+            ? @"SELECT record_id AS RecordId, goods_id AS GoodsId, sku_id AS SkuId, shop_id AS ShopId,
+                       name AS Name, spu_item_name AS SpuItemName, brand_name AS BrandName,
+                       price_sale AS PriceSale, price_market AS PriceMarket,
+                       goods_type AS GoodsType, check_status AS CheckStatus,
+                       state AS `State`, auto_state AS AutoState,
+                       MATCH(name, spu_item_name) AGAINST({0} IN BOOLEAN MODE) AS Score
+                FROM skudetail2
+                WHERE MATCH(name, spu_item_name) AGAINST({0} IN BOOLEAN MODE)
+                  AND shop_id = {1}
+                  AND deleted = 0
+                  AND state = 1
+                  AND auto_state = 1
+                ORDER BY Score DESC
+                LIMIT {2}"
+            : @"SELECT record_id AS RecordId, goods_id AS GoodsId, sku_id AS SkuId, shop_id AS ShopId,
+                       name AS Name, spu_item_name AS SpuItemName, brand_name AS BrandName,
+                       price_sale AS PriceSale, price_market AS PriceMarket,
+                       goods_type AS GoodsType, check_status AS CheckStatus,
+                       state AS `State`, auto_state AS AutoState,
+                       MATCH(name, spu_item_name) AGAINST({0} IN BOOLEAN MODE) AS Score
+                FROM skudetail2
+                WHERE MATCH(name, spu_item_name) AGAINST({0} IN BOOLEAN MODE)
+                  AND deleted = 0
+                  AND state = 1
+                  AND auto_state = 1
+                ORDER BY Score DESC
+                LIMIT {1}";
 
-        var rawItems = category != null
+        var rawItems = shopId != null
             ? await _db.SkuSearchProjections
-                .FromSqlRaw(sql, searchStr, category, topK)
+                .FromSqlRaw(sql, searchStr, shopId, topK)
                 .ToListAsync(ct)
             : await _db.SkuSearchProjections
                 .FromSqlRaw(sql, searchStr, topK)
                 .ToListAsync(ct);
 
         return rawItems.Select(x => new SkuSearchItem(
-            Id:       x.Id,
-            SkuCode:  x.SkuCode,
-            Name:     x.Name,
-            Category: x.Category,
-            Brand:    x.Brand,
-            Price:    x.Price,
-            ImageUrl: x.ImageUrl,
-            Score:    (float)x.Score,
-            Source:   "keyword"
+            RecordId:    x.RecordId,
+            GoodsId:     x.GoodsId,
+            SkuId:       x.SkuId,
+            ShopId:      x.ShopId,
+            Name:        x.Name,
+            SpuItemName: x.SpuItemName,
+            BrandName:   x.BrandName,
+            PriceSale:   x.PriceSale,
+            PriceMarket: null,
+            GoodsType:   null,
+            CheckStatus: null,
+            State:       1,
+            AutoState:   1,
+            Score:       (float)x.Score,
+            Source:      "keyword"
         )).ToList();
     }
 }

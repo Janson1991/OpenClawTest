@@ -3,13 +3,13 @@ import { ref } from 'vue'
 import { searchSkus, type SearchResponse, type ParsedQuery } from '@/api/search'
 
 export const useSearchStore = defineStore('search', () => {
-  const query      = ref('')
-  const category   = ref<string | undefined>(undefined)
-  const results    = ref<SearchResponse['items']>([])
-  const parsedQuery= ref<ParsedQuery | null>(null)
-  const loading    = ref(false)
-  const elapsedMs  = ref(0)
-  const error      = ref('')
+  const query       = ref('')
+  const shopId      = ref<number | undefined>(undefined)
+  const results     = ref<SearchResponse['items']>([])
+  const parsedQuery = ref<ParsedQuery | null>(null)
+  const loading     = ref(false)
+  const elapsedMs   = ref(0)
+  const error       = ref('')
 
   async function doSearch(q?: string) {
     const searchQuery = q ?? query.value
@@ -21,9 +21,9 @@ export const useSearchStore = defineStore('search', () => {
 
     try {
       const res = await searchSkus({
-        query:    searchQuery,
-        topK:     24,
-        category: category.value
+        query:   searchQuery,
+        topK:    24,
+        shopId:  shopId.value,
       })
       results.value     = res.items
       parsedQuery.value = res.parsedQuery
@@ -42,5 +42,5 @@ export const useSearchStore = defineStore('search', () => {
     error.value       = ''
   }
 
-  return { query, category, results, parsedQuery, loading, elapsedMs, error, doSearch, reset }
+  return { query, shopId, results, parsedQuery, loading, elapsedMs, error, doSearch, reset }
 })

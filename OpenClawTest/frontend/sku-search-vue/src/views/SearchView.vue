@@ -3,10 +3,10 @@
     <!-- 顶部搜索区 -->
     <header class="search-header">
       <h1 class="title">🔍 SKU 智能搜索</h1>
-      <p class="subtitle">支持语义理解、模糊搜索、同义词扩展</p>
+      <p class="subtitle">支持语义理解、模糊搜索、同义词扩展 · skudetail2 商品库</p>
 
       <div class="search-wrap">
-        <SearchBar placeholder="输入商品名称，例如：户外用品、送女朋友的礼物…" />
+        <SearchBar placeholder="输入商品名称，例如：户外用品、帐篷、牧高笛…" />
       </div>
 
       <!-- 热门搜索 -->
@@ -26,29 +26,30 @@
     <main class="result-area" v-if="store.results.length || store.loading">
       <!-- 统计信息栏 -->
       <div class="result-stats" v-if="!store.loading">
-        <span>
+        <span class="stats-text">
           找到 <strong>{{ store.results.length }}</strong> 个商品
           <template v-if="store.query">（"{{ store.query }}"）</template>
         </span>
 
-        <!-- 分类快速过滤 -->
-        <div class="category-filters">
+        <!-- 店铺快速过滤 -->
+        <div class="shop-filters" v-if="availableShops.length > 0">
+          <span class="filter-label">店铺：</span>
           <el-check-tag
-            :checked="!store.category"
-            @change="filterByCategory(undefined)"
+            :checked="!store.shopId"
+            @change="filterByShop(undefined)"
           >全部</el-check-tag>
           <el-check-tag
-            v-for="cat in availableCategories"
-            :key="cat"
-            :checked="store.category === cat"
-            @change="filterByCategory(cat)"
-          >{{ cat }}</el-check-tag>
+            v-for="shop in availableShops"
+            :key="shop.id"
+            :checked="store.shopId === shop.id"
+            @change="filterByShop(shop.id)"
+          >{{ shop.name || '店铺' + shop.id }} ({{ shop.count }})</el-check-tag>
         </div>
       </div>
 
       <!-- 商品网格 -->
       <div v-loading="store.loading" class="sku-grid">
-        <SkuCard v-for="item in store.results" :key="item.id" :item="item" />
+        <SkuCard v-for="item in store.results" :key="item.recordId" :item="item" />
       </div>
 
       <!-- 空结果 -->
@@ -62,6 +63,7 @@
     <div class="empty-state" v-else>
       <el-icon size="80" color="#dcdfe6"><Search /></el-icon>
       <p>输入关键词开始搜索</p>
+      <p class="hint">支持自然语言，例如"适合家庭露营的装备"</p>
     </div>
   </div>
 </template>
@@ -74,17 +76,21 @@ import { useSearchStore } from '@/stores/search'
 
 const store = useSearchStore()
 
-const hotKeywords = ['户外用品', '送女朋友礼物', '家用清洁', '儿童玩具', '厨房神器', '办公用品']
+const hotKeywords = ['户外用品', '帐篷', '牧高笛', '露营装备', '礼品卡', '景区门票']
 
-const availableCategories = computed(() =>
-  [...new Set(store.results
-    .map(r => r.category)
-    .filter(Boolean) as string[]
-  )]
-)
+const availableShops = computed(() => {
+  const shopMap = new Map<number, { id: number; name: string; count: number }>()
+  for (const item of store.results) {
+    if (!shopMap.has(item.shopId)) {
+      shopMap.set(item.shopId, { id: item.shopId, name: `店铺${item.shopId}`, count: 0 })
+    }
+    shopMap.get(item.shopId)!.count++
+  }
+  return [...shopMap.values()]
+})
 
-function filterByCategory(cat?: string) {
-  store.category = cat
+function filterByShop(shopId?: number) {
+  store.shopId = shopId
   store.doSearch()
 }
 </script>
@@ -135,15 +141,20 @@ function filterByCategory(cat?: string) {
   font-size: 14px;
   color: #606266;
 }
-.category-filters {
+.shop-filters {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  align-items: center;
+}
+.filter-label {
+  font-size: 13px;
+  color: #909399;
 }
 
 .sku-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 16px;
 }
 
@@ -154,7 +165,8 @@ function filterByCategory(cat?: string) {
   justify-content: center;
   min-height: 60vh;
   color: #c0c4cc;
-  gap: 16px;
+  gap: 12px;
   font-size: 15px;
 }
+.hint { font-size: 13px; opacity: 0.7; }
 </style>

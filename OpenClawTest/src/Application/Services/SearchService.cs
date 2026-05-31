@@ -1,8 +1,7 @@
 using System.Diagnostics;
-using System.Text.Json;
-using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 using SkuSearch.Application.DTOs;
+using SkuSearch.Application.Services;
 
 namespace SkuSearch.Application.Services;
 
@@ -10,24 +9,19 @@ public class SearchService : ISearchService
 {
     private readonly IAiQueryParser     _aiParser;
     private readonly IEmbeddingService  _embedding;
-    private readonly IDistributedCache  _cache;
-    private readonly ILogger<SearchService> _logger;
-
-    // 由 Infrastructure 层实现并注入
     private readonly IVectorSearchRepository  _vectorRepo;
     private readonly IKeywordSearchRepository _keywordRepo;
+    private readonly ILogger<SearchService> _logger;
 
     public SearchService(
         IAiQueryParser             aiParser,
         IEmbeddingService          embedding,
-        IDistributedCache          cache,
         IVectorSearchRepository    vectorRepo,
         IKeywordSearchRepository   keywordRepo,
         ILogger<SearchService>     logger)
     {
         _aiParser   = aiParser;
         _embedding  = embedding;
-        _cache      = cache;
         _vectorRepo = vectorRepo;
         _keywordRepo= keywordRepo;
         _logger     = logger;
@@ -37,49 +31,30 @@ public class SearchService : ISearchService
     {
         var sw = Stopwatch.StartNew();
 
-        // 1. 缓存命中直接返回
-        var cacheKey = $"search:{req.Query.Trim().ToLower()}:{req.Category}:{req.TopK}";
-        var cached   = await _cache.GetStringAsync(cacheKey, ct);
-        if (cached != null)
-        {
-            _logger.LogDebug("缓存命中: {Key}", cacheKey);
-            return JsonSerializer.Deserialize<SearchResponse>(cached)!;
-        }
-
-        // 2. AI 意图解析
+        // 1. AI 意图解析
         var parsed = await _aiParser.ParseAsync(req.Query, ct);
         _logger.LogInformation("AI 解析 [{Query}] → 关键词:{KW} 同义词:{SYN}",
             req.Query,
             string.Join(",", parsed.Keywords),
             string.Join(",", parsed.Synonyms));
 
-        // 3. 并行执行向量搜索 + 全文搜索
+        // 2. 并行执行向量搜索 + 全文搜索
         var queryEmbedding = await _embedding.GetEmbeddingAsync(req.Query, ct);
 
-        var vectorTask  = _vectorRepo.SearchAsync(queryEmbedding, req.TopK * 2, req.Category, req.MinScore, ct);
-        var keywordTask = _keywordRepo.SearchAsync(parsed, req.TopK * 2, req.Category, ct);
+        var vectorTask  = _vectorRepo.SearchAsync(queryEmbedding, req.TopK * 2, req.ShopId, req.MinScore, ct);
+        var keywordTask = _keywordRepo.SearchAsync(parsed, req.TopK * 2, req.ShopId, ct);
 
         await Task.WhenAll(vectorTask, keywordTask);
 
-        // 4. RRF 融合排序
+        // 3. RRF 融合排序
         var merged = ReciprocalRankFusion(vectorTask.Result, keywordTask.Result);
         var items  = merged.Take(req.TopK).ToList();
 
         sw.Stop();
-        var response = new SearchResponse(items, parsed, items.Count, sw.ElapsedMilliseconds);
-
-        // 5. 结果缓存 5 分钟
-        await _cache.SetStringAsync(cacheKey,
-            JsonSerializer.Serialize(response),
-            new DistributedCacheEntryOptions
-            {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
-            }, ct);
-
         _logger.LogInformation("搜索完成 [{Query}] → {Count} 条, 耗时 {Ms}ms",
             req.Query, items.Count, sw.ElapsedMilliseconds);
 
-        return response;
+        return new SearchResponse(items, parsed, items.Count, sw.ElapsedMilliseconds);
     }
 
     /// <summary>
@@ -98,8 +73,8 @@ public class SearchService : ISearchService
         {
             foreach (var (item, rank) in list.Select((x, i) => (x, i + 1)))
             {
-                scores[item.Id] = scores.GetValueOrDefault(item.Id) + 1.0 / (k + rank);
-                itemsMap.TryAdd(item.Id, item with { Source = source });
+                scores[item.RecordId] = scores.GetValueOrDefault(item.RecordId) + 1.0 / (k + rank);
+                itemsMap.TryAdd(item.RecordId, item with { Source = source });
             }
         }
 
@@ -113,17 +88,17 @@ public class SearchService : ISearchService
     }
 }
 
-// 仓储接口（由 Infrastructure 实现）
+// 仓储接口
 public interface IVectorSearchRepository
 {
     Task<List<SkuSearchItem>> SearchAsync(
-        float[] embedding, int topK, string? category,
+        float[] embedding, int topK, int? shopId,
         float scoreThreshold, CancellationToken ct = default);
 }
 
 public interface IKeywordSearchRepository
 {
     Task<List<SkuSearchItem>> SearchAsync(
-        ParsedQuery parsed, int topK, string? category,
+        ParsedQuery parsed, int topK, int? shopId,
         CancellationToken ct = default);
 }
