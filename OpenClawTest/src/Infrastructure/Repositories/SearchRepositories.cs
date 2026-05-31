@@ -87,27 +87,27 @@ public class MySqlKeywordSearchRepository : IKeywordSearchRepository
 
         // 动态拼接 SQL（避免 SQL 注入，参数化搜索词）
         var sql = shopId != null
-            ? @"SELECT record_id AS RecordId, goods_id AS GoodsId, sku_id AS SkuId, shop_id AS ShopId,
-                       name AS Name, spu_item_name AS SpuItemName, brand_name AS BrandName,
-                       price_sale AS PriceSale, price_market AS PriceMarket,
-                       goods_type AS GoodsType, check_status AS CheckStatus,
-                       state AS `State`, auto_state AS AutoState,
-                       MATCH(name, spu_item_name) AGAINST({0} IN BOOLEAN MODE) AS Score
+            ? @"SELECT RecordId, GoodsId, SkuId,  ShopId,
+                       name AS Name,  SpuItemName,  BrandName, '' as ImageUrl,
+                        PriceSale,  PriceMarket,
+                       GoodsType, CheckStatus,
+                       state AS `State`, AutoState,
+                       MATCH(name, SpuItemName) AGAINST({0} IN BOOLEAN MODE) AS Score
                 FROM skudetail2
-                WHERE MATCH(name, spu_item_name) AGAINST({0} IN BOOLEAN MODE)
-                  AND shop_id = {1}
+                WHERE MATCH(name, SpuItemName) AGAINST({0} IN BOOLEAN MODE)
+                  AND ShopId = {1}
                   AND deleted = 0
                   AND state = 1
                 ORDER BY Score DESC
                 LIMIT {2}"
-            : @"SELECT record_id AS RecordId, goods_id AS GoodsId, sku_id AS SkuId, shop_id AS ShopId,
-                       name AS Name, spu_item_name AS SpuItemName, brand_name AS BrandName,
-                       price_sale AS PriceSale, price_market AS PriceMarket,
-                       goods_type AS GoodsType, check_status AS CheckStatus,
-                       state AS `State`, auto_state AS AutoState,
-                       MATCH(name, spu_item_name) AGAINST({0} IN BOOLEAN MODE) AS Score
+            : @"SELECT  RecordId,  GoodsId,  SkuId,  ShopId,
+                       name AS Name,  SpuItemName,  BrandName, '' as ImageUrl,
+                       PriceSale,  PriceMarket,
+                       GoodsType,  CheckStatus,
+                       state AS `State`,  AutoState,
+                       MATCH(name, SpuItemName) AGAINST({0} IN BOOLEAN MODE) AS Score
                 FROM skudetail2
-                WHERE MATCH(name, spu_item_name) AGAINST({0} IN BOOLEAN MODE)
+                WHERE MATCH(name, SpuItemName) AGAINST({0} IN BOOLEAN MODE)
                   AND deleted = 0
                   AND state = 1
                 ORDER BY Score DESC

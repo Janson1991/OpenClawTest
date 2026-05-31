@@ -1,7 +1,8 @@
-using System.Net.Http.Json;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using SkuSearch.Application.Services;
+using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace SkuSearch.Infrastructure.Services;
 
@@ -62,7 +63,11 @@ public class OllamaEmbeddingService : IEmbeddingService
             throw new HttpRequestException(
                 $"Ollama /api/embed 返回 {response.StatusCode}: {content}");
 
-        var result = System.Text.Json.JsonSerializer.Deserialize<OllamaNewEmbedResponse>(content);
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true // 忽略大小写（最稳妥，能匹配 embeddings 或 Embeddings）
+        };
+        var result = System.Text.Json.JsonSerializer.Deserialize<OllamaNewEmbedResponse>(content, options);
         if (result?.Embeddings == null || result.Embeddings.Count == 0)
             throw new InvalidOperationException($"Ollama 返回空向量。响应: {content[..Math.Min(200, content.Length)]}");
 
@@ -84,8 +89,12 @@ public class OllamaEmbeddingService : IEmbeddingService
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(
                     $"Ollama /api/embeddings 返回 {response.StatusCode}: {content}");
-
-            var result = System.Text.Json.JsonSerializer.Deserialize<OllamaOldEmbedResponse>(content);
+            // 1. 创建配置选项
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true // 忽略大小写（最稳妥，能匹配 embeddings 或 Embeddings）
+            };
+            var result = System.Text.Json.JsonSerializer.Deserialize<OllamaOldEmbedResponse>(content, options);
             if (result?.Embedding == null || result.Embedding.Length == 0)
                 throw new InvalidOperationException($"Ollama 返回空向量。响应: {content[..Math.Min(200, content.Length)]}");
 

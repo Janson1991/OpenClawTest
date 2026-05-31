@@ -53,9 +53,9 @@ builder.Services.AddSingleton(_ => new QdrantClient(
 // ─── Embedding 服务（二选一，通过配置切换）──────────────────────────────────
 //var embeddingProvider = builder.Configuration["AI:EmbeddingProvider"] ?? "openai";
 //if (embeddingProvider.Equals("ollama", StringComparison.OrdinalIgnoreCase))
-    //builder.Services.AddHttpClient<IEmbeddingService, OllamaEmbeddingService>();
+    builder.Services.AddHttpClient<IEmbeddingService, OllamaEmbeddingService>();
 //else
-    builder.Services.AddHttpClient<IEmbeddingService, OpenAiEmbeddingService>();
+//    builder.Services.AddHttpClient<IEmbeddingService, OpenAiEmbeddingService>();
 
 // ─── AI 查询解析 ──────────────────────────────────────────────────────────────
 builder.Services.AddHttpClient<IAiQueryParser, AiQueryParser>();
