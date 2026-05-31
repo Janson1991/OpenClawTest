@@ -41,6 +41,7 @@ builder.Services.AddScoped<IPriceMonitorService, PriceMonitorService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IFavoritesService, FavoritesService>();
 builder.Services.AddScoped<ISearchHistoryService, SearchHistoryService>();
+builder.Services.AddScoped<IDecisionSupportService, DecisionSupportService>();
 builder.Services.AddHttpClient();
 
 // Configure CORS
