@@ -31,27 +31,7 @@ public class AiQueryParser : IAiQueryParser
 
     public async Task<ParsedQuery> ParseAsync(string userInput, CancellationToken ct = default)
     {
-        var prompt = $"""
-            你是电商商品搜索助手，擅长理解用户的购物意图。
-            
-            用户输入："{userInput}"
-            
-            请分析用户意图并返回严格的 JSON 格式（不要有其他任何文字）：
-            {{
-              "keywords":   ["直接相关词1", "直接相关词2"],
-              "synonyms":   ["同义词或相关商品类型1", "同义词或相关商品类型2"],
-              "categories": ["商品分类1", "商品分类2"],
-              "attributes": {{"属性名": "属性值"}}
-            }}
-            
-            示例1：用户输入"户外用品"
-            {{"keywords":["户外"],"synonyms":["帐篷","睡袋","露营椅","防潮垫","头灯","登山杖","野营"],"categories":["户外运动","露营装备"],"attributes":{{}}}}
-            
-            示例2：用户输入"给孩子买双跑鞋"
-            {{"keywords":["跑鞋","童鞋"],"synonyms":["运动鞋","儿童跑步鞋","儿童训练鞋"],"categories":["童鞋","运动鞋"],"attributes":{{"适用人群":"儿童"}}}}
-            
-            只返回 JSON，不要 markdown 代码块，不要解释。
-            """;
+        var prompt = BuildPrompt(userInput);
 
         try
         {
@@ -82,7 +62,6 @@ public class AiQueryParser : IAiQueryParser
         catch (Exception ex)
         {
             _logger.LogWarning(ex, "AI 解析失败，降级为关键词直接搜索");
-            // 降级：直接用原始输入作为关键词
             return new ParsedQuery(
                 Keywords:   [userInput],
                 Synonyms:   [],
@@ -90,6 +69,30 @@ public class AiQueryParser : IAiQueryParser
                 Attributes: new Dictionary<string, string>()
             );
         }
+    }
+
+    private static string BuildPrompt(string userInput)
+    {
+        // 用普通字符串拼接，避免 C# 花括号转义问题
+        return @"你是电商商品搜索助手，擅长理解用户的购物意图。
+
+用户输入：""" + userInput + @"""
+
+请分析用户意图并返回严格的 JSON 格式（不要有其他任何文字）：
+{
+  ""keywords"":   [""直接相关词1"", ""直接相关词2""],
+  ""synonyms"":   [""同义词或相关商品类型1"", ""同义词或相关商品类型2""],
+  ""categories"": [""商品分类1"", ""商品分类2""],
+  ""attributes"": {""属性名"": ""属性值""}
+}
+
+示例1：用户输入""户外用品""
+{""keywords"":[""户外""],""synonyms"":[""帐篷"",""睡袋"",""露营椅"",""防潮垫"",""头灯"",""登山杖"",""野营""],""categories"":[""户外运动"",""露营装备""],""attributes"":{}}
+
+示例2：用户输入""给孩子买双跑鞋""
+{""keywords"":[""跑鞋"",""童鞋""],""synonyms"":[""运动鞋"",""儿童跑步鞋"",""儿童训练鞋""],""categories"":[""童鞋"",""运动鞋""],""attributes"":{""适用人群"":""儿童""}}
+
+只返回 JSON，不要 markdown 代码块，不要解释。";
     }
 
     private static ParsedQuery ParseResult(string jsonContent)
