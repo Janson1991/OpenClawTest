@@ -27,7 +27,7 @@ public class QdrantVectorSearchRepository : IVectorSearchRepository
                           Field = new FieldCondition
                           {
                               Key   = "shop_id",
-                              Match = new MatchInteger { Integer = shopId.Value }
+                              Match = new Match { Integer = (ulong)shopId.Value }
                           }
                       }
                   }
