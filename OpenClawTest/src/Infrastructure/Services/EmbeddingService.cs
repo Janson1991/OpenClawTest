@@ -6,52 +6,8 @@ using SkuSearch.Application.Services;
 namespace SkuSearch.Infrastructure.Services;
 
 /// <summary>
-/// OpenAI text-embedding-3-small（在线，效果最好）
-/// </summary>
-public class OpenAiEmbeddingService : IEmbeddingService
-{
-    private readonly HttpClient _http;
-    private readonly string _model;
-
-    public OpenAiEmbeddingService(HttpClient http, IConfiguration config)
-    {
-        _http  = new HttpClient();
-        _model = config["AI:EmbeddingModel"] ?? "text-embedding-3-small";
-
-        _http.BaseAddress = new Uri(config["AI:BaseUrl"] ?? "https://api.openai.com");
-        _http.DefaultRequestHeaders.Authorization =
-            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", config["AI:ApiKey"]);
-    }
-
-    public async Task<float[]> GetEmbeddingAsync(string text, CancellationToken ct = default)
-    {
-        var results = await GetBatchEmbeddingsAsync([text], ct);
-        return results[0];
-    }
-
-    public async Task<List<float[]>> GetBatchEmbeddingsAsync(List<string> texts, CancellationToken ct = default)
-    {
-        var response = await _http.PostAsJsonAsync("api/paas/v4//embeddings", new
-        {
-            model = _model,
-            input = texts
-        }, ct);
-        response.EnsureSuccessStatusCode();
-
-        var result = await response.Content.ReadFromJsonAsync<EmbeddingResponse>(ct);
-        return result!.Data
-            .OrderBy(x => x.Index)
-            .Select(x => x.Embedding)
-            .ToList();
-    }
-
-    private record EmbeddingResponse(List<EmbeddingItem> Data);
-    private record EmbeddingItem(int Index, float[] Embedding);
-}
-
-/// <summary>
-/// Ollama 本地 Embedding（完全离线，推荐 bge-m3 模型）
-/// 运行方式: ollama pull bge-m3 && ollama serve
+/// Ollama 本地 Embedding（完全离线）
+/// 运行: ollama pull bge-m3 && ollama serve
 /// </summary>
 public class OllamaEmbeddingService : IEmbeddingService
 {
@@ -67,7 +23,7 @@ public class OllamaEmbeddingService : IEmbeddingService
         _logger = logger;
 
         _http.BaseAddress = new Uri(config["Ollama:BaseUrl"] ?? "http://localhost:11434");
-        _http.Timeout     = TimeSpan.FromSeconds(60);
+        _http.Timeout     = TimeSpan.FromSeconds(120);
     }
 
     public async Task<float[]> GetEmbeddingAsync(string text, CancellationToken ct = default)
@@ -78,20 +34,70 @@ public class OllamaEmbeddingService : IEmbeddingService
 
     public async Task<List<float[]>> GetBatchEmbeddingsAsync(List<string> texts, CancellationToken ct = default)
     {
-        // Ollama /api/embed 支持批量输入
-        var response = await _http.PostAsJsonAsync("/embeddings", new
-        {
-            model = _model,
-            input = texts
-        }, ct);
-        response.EnsureSuccessStatusCode();
+        // Ollama 有两个版本的 API，自动适配：
+        //   新版 (0.4.0+): POST /api/embed  { model, input: [...] }
+        //   旧版:          POST /api/embeddings  { model, prompt: "..." }
 
-        var result = await response.Content.ReadFromJsonAsync<OllamaEmbedResponse>(ct);
+        try
+        {
+            // 先试新版 API（支持批量）
+            return await CallNewApiAsync(texts, ct);
+        }
+        catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+        {
+            _logger.LogWarning("新版 /api/embed 不可用，降级到旧版 /api/embeddings");
+            return await CallOldApiAsync(texts, ct);
+        }
+    }
+
+    /// <summary>新版 API: POST /api/embed（支持批量 input）</summary>
+    private async Task<List<float[]>> CallNewApiAsync(List<string> texts, CancellationToken ct)
+    {
+        var requestBody = new { model = _model, input = texts };
+        var response = await _http.PostAsJsonAsync("/api/embed", requestBody, ct);
+
+        var content = await response.Content.ReadAsStringAsync(ct);
+
+        if (!response.IsSuccessStatusCode)
+            throw new HttpRequestException(
+                $"Ollama /api/embed 返回 {response.StatusCode}: {content}");
+
+        var result = System.Text.Json.JsonSerializer.Deserialize<OllamaNewEmbedResponse>(content);
         if (result?.Embeddings == null || result.Embeddings.Count == 0)
-            throw new InvalidOperationException("Ollama 返回空向量");
+            throw new InvalidOperationException($"Ollama 返回空向量。响应: {content[..Math.Min(200, content.Length)]}");
 
         return result.Embeddings;
     }
 
-    private record OllamaEmbedResponse(List<float[]> Embeddings);
+    /// <summary>旧版 API: POST /api/embeddings（逐条处理）</summary>
+    private async Task<List<float[]>> CallOldApiAsync(List<string> texts, CancellationToken ct)
+    {
+        var results = new List<float[]>();
+
+        foreach (var text in texts)
+        {
+            var requestBody = new { model = _model, prompt = text };
+            var response = await _http.PostAsJsonAsync("/api/embeddings", requestBody, ct);
+
+            var content = await response.Content.ReadAsStringAsync(ct);
+
+            if (!response.IsSuccessStatusCode)
+                throw new HttpRequestException(
+                    $"Ollama /api/embeddings 返回 {response.StatusCode}: {content}");
+
+            var result = System.Text.Json.JsonSerializer.Deserialize<OllamaOldEmbedResponse>(content);
+            if (result?.Embedding == null || result.Embedding.Length == 0)
+                throw new InvalidOperationException($"Ollama 返回空向量。响应: {content[..Math.Min(200, content.Length)]}");
+
+            results.Add(result.Embedding);
+        }
+
+        return results;
+    }
+
+    // 新版响应: { "embeddings": [[0.1, 0.2, ...]] }
+    private record OllamaNewEmbedResponse(List<float[]> Embeddings);
+
+    // 旧版响应: { "embedding": [0.1, 0.2, ...] }
+    private record OllamaOldEmbedResponse(float[] Embedding);
 }
