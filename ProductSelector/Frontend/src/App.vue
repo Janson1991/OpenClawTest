@@ -4,6 +4,7 @@
       <div class="header-content">
         <h1>选品监控工具</h1>
         <div class="nav-buttons">
+          <el-button @click="goToDashboard" type="success">仪表盘</el-button>
           <el-button @click="goToAnalysis" type="primary">AI分析</el-button>
           <el-input
             v-model="searchKeyword"
@@ -296,6 +297,10 @@ const formatNumber = (num) => {
 
 const goToAnalysis = () => {
   window.location.href = '/ai-analysis.html'
+}
+
+const goToDashboard = () => {
+  window.location.href = '/dashboard.html'
 }
 
 const getPlatformType = (platform) => {

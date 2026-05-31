@@ -18,6 +18,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IScraperService, ScraperService>();
 builder.Services.AddScoped<IAIAnalysisService, AIAnalysisService>();
+builder.Services.AddScoped<IPriceMonitorService, PriceMonitorService>();
 builder.Services.AddHttpClient();
 
 // Configure CORS

@@ -16,7 +16,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
-        aiAnalysis: 'ai-analysis.html'
+        aiAnalysis: 'ai-analysis.html',
+        dashboard: 'dashboard.html'
       }
     }
   }

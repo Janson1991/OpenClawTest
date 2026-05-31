@@ -11,6 +11,8 @@ public class AppDbContext : DbContext
     
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductTag> ProductTags { get; set; }
+    public DbSet<PriceAlert> PriceAlerts { get; set; }
+    public DbSet<PriceHistory> PriceHistories { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -29,5 +31,17 @@ public class AppDbContext : DbContext
         
         modelBuilder.Entity<Product>()
             .HasIndex(p => p.SalesCount);
+        
+        modelBuilder.Entity<PriceAlert>()
+            .HasIndex(a => a.UserId);
+        
+        modelBuilder.Entity<PriceAlert>()
+            .HasIndex(a => a.ProductId);
+        
+        modelBuilder.Entity<PriceHistory>()
+            .HasIndex(h => h.ProductId);
+        
+        modelBuilder.Entity<PriceHistory>()
+            .HasIndex(h => h.RecordedAt);
     }
 }
