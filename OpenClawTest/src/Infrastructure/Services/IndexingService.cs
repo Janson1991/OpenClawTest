@@ -128,8 +128,12 @@ public class IndexingService
     /// <summary>删除商品向量</summary>
     public async Task DeleteSkuAsync(long recordId, CancellationToken ct = default)
     {
-        await _qdrant.DeleteAsync(CollectionName,
-            new PointId { Num = (ulong)recordId },
+        await _qdrant.DeleteAsync(
+            CollectionName,
+            new PointIdsList
+            {
+                Ids = { new PointId { Num = (ulong)recordId } }
+            },
             cancellationToken: ct);
     }
 
