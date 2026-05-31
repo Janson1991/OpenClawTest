@@ -13,6 +13,9 @@ public class AppDbContext : DbContext
     public DbSet<ProductTag> ProductTags { get; set; }
     public DbSet<PriceAlert> PriceAlerts { get; set; }
     public DbSet<PriceHistory> PriceHistories { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<UserFavorite> UserFavorites { get; set; }
+    public DbSet<SearchHistory> SearchHistories { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -43,5 +46,23 @@ public class AppDbContext : DbContext
         
         modelBuilder.Entity<PriceHistory>()
             .HasIndex(h => h.RecordedAt);
+        
+        modelBuilder.Entity<User>()
+            .HasIndex(u => u.Username)
+            .IsUnique();
+        
+        modelBuilder.Entity<User>()
+            .HasIndex(u => u.Email)
+            .IsUnique();
+        
+        modelBuilder.Entity<UserFavorite>()
+            .HasIndex(f => new { f.UserId, f.ProductId })
+            .IsUnique();
+        
+        modelBuilder.Entity<SearchHistory>()
+            .HasIndex(h => h.UserId);
+        
+        modelBuilder.Entity<SearchHistory>()
+            .HasIndex(h => h.Keyword);
     }
 }

@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # MySQL数据库
+  mysql:
+    image: mysql:8.0
+    container_name: product-selector-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: product_selector
+      MYSQL_USER: product_selector
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./Database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./Database/sample_data.sql:/docker-entrypoint-initdb.d/sample_data.sql
+    networks:
+      - product-selector-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # 后端API
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: product-selector-backend
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=mysql;Port=3306;Database=product_selector;User=root;Password=123456;
+      - Jwt__SecretKey=your-super-secret-key-at-least-32-characters-long
+    ports:
+      - "5000:5000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - product-selector-network
+
+  # 前端
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    container_name: product-selector-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - product-selector-network
+
+volumes:
+  mysql_data:
+
+networks:
+  product-selector-network:
+    driver: bridge
