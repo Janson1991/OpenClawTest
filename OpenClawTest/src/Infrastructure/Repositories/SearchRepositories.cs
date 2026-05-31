@@ -97,7 +97,6 @@ public class MySqlKeywordSearchRepository : IKeywordSearchRepository
                   AND shop_id = {1}
                   AND deleted = 0
                   AND state = 1
-                  AND auto_state = 1
                 ORDER BY Score DESC
                 LIMIT {2}"
             : @"SELECT record_id AS RecordId, goods_id AS GoodsId, sku_id AS SkuId, shop_id AS ShopId,
@@ -110,7 +109,6 @@ public class MySqlKeywordSearchRepository : IKeywordSearchRepository
                 WHERE MATCH(name, spu_item_name) AGAINST({0} IN BOOLEAN MODE)
                   AND deleted = 0
                   AND state = 1
-                  AND auto_state = 1
                 ORDER BY Score DESC
                 LIMIT {1}";
 

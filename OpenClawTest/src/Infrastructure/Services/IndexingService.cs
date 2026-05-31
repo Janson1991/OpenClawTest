@@ -41,12 +41,11 @@ public class IndexingService
 
         await EnsureCollectionAsync(recreate: false);
 
-        // skudetail2: 已上架 + 未删除 的商品
+        // skudetail2: 未删除 + 有名称的商品（State 和 AutoState 各种组合都可能有效）
         var total = await Task.Run(() =>
             _db.Skus.CountAsync(s =>
                 !s.Deleted &&
-                s.State == 1 &&
-                s.AutoState == 1, ct), ct);
+                s.State == 1, ct), ct);
 
         var processed = 0;
         var failed    = 0;
@@ -56,7 +55,7 @@ public class IndexingService
         for (int page = 0; !ct.IsCancellationRequested; page++)
         {
             var batch = await _db.Skus
-                .Where(s => !s.Deleted && s.State == 1 && s.AutoState == 1)
+                .Where(s => !s.Deleted && s.State == 1)
                 .OrderBy(s => s.RecordId)
                 .Skip(page * BatchSize)
                 .Take(BatchSize)
@@ -175,20 +174,32 @@ public class IndexingService
 
     /// <summary>
     /// 拼接用于 Embedding 的文本
-    /// skudetail2 没有 description 和 tags 字段
-    /// 用 Name + SpuItemName + BrandName + GoodsType 拼接
+    /// skudetail2 数据特点：Name 是最核心字段，其他字段经常为 NULL
+    /// 搜索文本 = Name（完整商品标题）+ SpuItemName + BrandName + GoodsType
     /// </summary>
     private static string BuildSearchText(SkuDetail sku)
     {
         var parts = new List<string>();
 
-        if (!string.IsNullOrWhiteSpace(sku.Name))         parts.Add(sku.Name);
-        if (!string.IsNullOrWhiteSpace(sku.SpuItemName))  parts.Add(sku.SpuItemName);
-        if (!string.IsNullOrWhiteSpace(sku.BrandName))    parts.Add(sku.BrandName);
-        if (!string.IsNullOrWhiteSpace(sku.GoodsType))    parts.Add(sku.GoodsType);
+        // Name 是商品全标题，包含品牌、品类、规格等所有信息，最重要
+        if (!string.IsNullOrWhiteSpace(sku.Name))
+            parts.Add(sku.Name);
+
+        // SpuItemName 补充规格信息
+        if (!string.IsNullOrWhiteSpace(sku.SpuItemName))
+            parts.Add(sku.SpuItemName);
+
+        // BrandName 补充品牌（有些 Name 里已包含品牌）
+        if (!string.IsNullOrWhiteSpace(sku.BrandName) && sku.BrandId > 0)
+            parts.Add(sku.BrandName);
+
+        // GoodsType 补充类型
+        if (!string.IsNullOrWhiteSpace(sku.GoodsType))
+            parts.Add(sku.GoodsType);
 
         return string.Join(" ", parts);
-        // 例: "户外帐篷 三人款 牧高笛 实体卡"
+        // 例: "言艺茶具套装紫砂功夫茶具陶瓷旅行整套茶壶茶杯茶海实木茶盘茶台"
+        // 例: "威克多Victor 胜利纳米7羽毛球拍 高刚碳素3U全面型羽毛球拍单拍 HX-7SP 金色 已穿线"
     }
 
     private async Task EnsureCollectionAsync(bool recreate = false)
