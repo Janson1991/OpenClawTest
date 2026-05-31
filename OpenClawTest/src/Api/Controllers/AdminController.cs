@@ -10,17 +10,17 @@ namespace SkuSearch.Api.Controllers;
 [Route("api/admin")]
 public class AdminController : ControllerBase
 {
-    private readonly IndexingService _indexing;
+    private readonly IServiceScopeFactory _scopeFactory;
     private readonly ILogger<AdminController> _logger;
 
     // 全局索引任务控制令牌
     private static CancellationTokenSource? _cts;
     private static DateTime? _startedAt;
 
-    public AdminController(IndexingService indexing, ILogger<AdminController> logger)
+    public AdminController(IServiceScopeFactory scopeFactory, ILogger<AdminController> logger)
     {
-        _indexing = indexing;
-        _logger   = logger;
+        _scopeFactory = scopeFactory;
+        _logger       = logger;
     }
 
     /// <summary>
@@ -40,9 +40,13 @@ public class AdminController : ControllerBase
 
         _ = Task.Run(async () =>
         {
+            // 创建独立作用域，避免 DbContext 与 HTTP 请求共享生命周期
+            using var scope = _scopeFactory.CreateScope();
+            var indexing = scope.ServiceProvider.GetRequiredService<IndexingService>();
+
             try
             {
-                await _indexing.BuildFullIndexAsync(token);
+                await indexing.BuildFullIndexAsync(token);
             }
             catch (OperationCanceledException)
             {
@@ -77,9 +81,12 @@ public class AdminController : ControllerBase
     [HttpGet("index/status")]
     public async Task<IActionResult> GetIndexStatus()
     {
+        using var scope = _scopeFactory.CreateScope();
+        var indexing = scope.ServiceProvider.GetRequiredService<IndexingService>();
+
         try
         {
-            var info = await _indexing.GetCollectionInfoAsync();
+            var info = await indexing.GetCollectionInfoAsync();
             return Ok(new
             {
                 isBuilding    = _cts != null,
