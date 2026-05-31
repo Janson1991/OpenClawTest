@@ -3,18 +3,21 @@
     <el-header>
       <div class="header-content">
         <h1>选品监控工具</h1>
-        <el-input
-          v-model="searchKeyword"
-          placeholder="输入关键词搜索商品"
-          class="search-input"
-          @keyup.enter="handleSearch"
-        >
-          <template #append>
-            <el-button @click="handleSearch" :loading="searching">
-              搜索
-            </el-button>
-          </template>
-        </el-input>
+        <div class="nav-buttons">
+          <el-button @click="goToAnalysis" type="primary">AI分析</el-button>
+          <el-input
+            v-model="searchKeyword"
+            placeholder="输入关键词搜索商品"
+            class="search-input"
+            @keyup.enter="handleSearch"
+          >
+            <template #append>
+              <el-button @click="handleSearch" :loading="searching">
+                搜索
+              </el-button>
+            </template>
+          </el-input>
+        </div>
       </div>
     </el-header>
     
@@ -291,6 +294,10 @@ const formatNumber = (num) => {
   return num.toString()
 }
 
+const goToAnalysis = () => {
+  window.location.href = '/ai-analysis.html'
+}
+
 const getPlatformType = (platform) => {
   const types = {
     '1688': 'danger',
@@ -311,6 +318,12 @@ onMounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .search-input {
