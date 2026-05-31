@@ -17,8 +17,9 @@ public class IndexingService
     private readonly ILogger<IndexingService> _logger;
 
     public const string CollectionName = "sku_vectors";
-    public const ulong  VectorSize     = 1536;   // OpenAI text-embedding-3-small
-    // public const ulong VectorSize   = 1024;   // Ollama bge-m3 用这个
+    // public const ulong VectorSize   = 1536;   // OpenAI text-embedding-3-small
+    // public const ulong VectorSize   = 1024;   // Ollama bge-m3
+    public const ulong  VectorSize     = 2048;    // 你当前使用的模型维度
     private const int   BatchSize      = 200;
 
     public IndexingService(
@@ -33,65 +34,97 @@ public class IndexingService
         _logger    = logger;
     }
 
-    /// <summary>全量建索引（首次或重建）</summary>
+    /// <summary>
+    /// 全量建索引（智能增量：只对新增/修改的商品调用 Embedding API）
+    /// </summary>
     public async Task BuildFullIndexAsync(CancellationToken ct = default)
     {
-        _logger.LogInformation("===== 开始全量建立向量索引 =====");
+        _logger.LogInformation("===== 开始建立向量索引（智能增量模式）=====");
         var sw = Stopwatch.StartNew();
 
         await EnsureCollectionAsync(recreate: false);
 
-        // skudetail2: 未删除 + 有名称的商品（State 和 AutoState 各种组合都可能有效）
-        var total = await Task.Run(() =>
-            _db.Skus.CountAsync(s =>
-                !s.Deleted &&
-                s.State == 1, ct), ct);
+        // 1. 获取 Qdrant 已有的所有 point ID 和 payload（用于对比）
+        _logger.LogInformation("加载 Qdrant 已有向量数据...");
+        var existingPoints = await LoadExistingPointsAsync(ct);
+        _logger.LogInformation("Qdrant 已有 {Count} 条向量", existingPoints.Count);
 
+        // 2. 从 MySQL 读取所有有效商品
+        var allSkus = await _db.Skus
+            .Where(s => !s.Deleted && s.State == 1)
+            .OrderBy(s => s.RecordId)
+            .ToListAsync(ct);
+
+        _logger.LogInformation("MySQL 有效商品总数: {Total}", allSkus.Count);
+
+        // 3. 对比差异，筛选需要处理的商品
+        var toCreate = new List<SkuDetail>();   // Qdrant 没有的 → 新建
+        var toUpdate = new List<SkuDetail>();   // Qdrant 有但数据变了 → 更新
+        var skipped  = 0;
+
+        foreach (var sku in allSkus)
+        {
+            var searchKey = BuildSearchText(sku);
+
+            if (existingPoints.TryGetValue(sku.RecordId, out var existing))
+            {
+                // 比较搜索文本是否变化（如果商品名称/品牌等改了，需要重新 embedding）
+                if (existing.SearchText == searchKey)
+                {
+                    skipped++;
+                    continue; // 完全没变，跳过
+                }
+                toUpdate.Add(sku);
+            }
+            else
+            {
+                toCreate.Add(sku);
+            }
+        }
+
+        _logger.LogInformation(
+            "差异分析完成: 新增 {Create} / 更新 {Update} / 跳过 {Skip}",
+            toCreate.Count, toUpdate.Count, skipped);
+
+        // 4. 合并需要处理的商品（新增 + 更新），批量生成 embedding
+        var toProcess = toCreate.Concat(toUpdate).ToList();
         var processed = 0;
         var failed    = 0;
 
-        _logger.LogInformation("待处理商品总数: {Total}", total);
-
-        for (int page = 0; !ct.IsCancellationRequested; page++)
+        if (toProcess.Any())
         {
-            var batch = await _db.Skus
-                .Where(s => !s.Deleted && s.State == 1)
-                .OrderBy(s => s.RecordId)
-                .Skip(page * BatchSize)
-                .Take(BatchSize)
-                .ToListAsync(ct);
+            _logger.LogInformation("开始处理 {Count} 个商品的 Embedding...", toProcess.Count);
 
-            if (!batch.Any()) break;
-
-            try
+            for (int i = 0; i < toProcess.Count; i += BatchSize)
             {
-                await ProcessBatchAsync(batch, ct);
-                processed += batch.Count;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "第 {Page} 批处理失败，跳过继续", page);
-                failed += batch.Count;
-                await Task.Delay(2000, ct);
-                continue;
-            }
+                if (ct.IsCancellationRequested) break;
 
-            var percent = (double)processed / total * 100;
-            var eta = processed > 0
-                ? TimeSpan.FromSeconds(sw.Elapsed.TotalSeconds / processed * (total - processed))
-                : TimeSpan.Zero;
+                var batch = toProcess.Skip(i).Take(BatchSize).ToList();
 
-            _logger.LogInformation(
-                "进度: {Processed}/{Total} ({Percent:F1}%) | 耗时: {Elapsed} | 预计剩余: {ETA}",
-                processed, total, percent,
-                sw.Elapsed.ToString(@"hh\:mm\:ss"),
-                eta.ToString(@"hh\:mm\:ss"));
+                try
+                {
+                    await ProcessBatchAsync(batch, ct);
+                    processed += batch.Count;
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "第 {Page} 批处理失败，跳过继续", i / BatchSize);
+                    failed += batch.Count;
+                    await Task.Delay(2000, ct);
+                    continue;
+                }
+
+                var percent = (double)processed / toProcess.Count * 100;
+                _logger.LogInformation(
+                    "进度: {Processed}/{Total} ({Percent:F1}%)",
+                    processed, toProcess.Count, percent);
+            }
         }
 
         sw.Stop();
         _logger.LogInformation(
-            "===== 索引完成: 成功 {OK} / 失败 {FAIL} / 总耗时 {Elapsed} =====",
-            processed, failed, sw.Elapsed);
+            "===== 索引完成: 新增+更新 {OK} / 跳过 {Skip} / 失败 {FAIL} / 耗时 {Elapsed} =====",
+            processed, skipped, failed, sw.Elapsed);
     }
 
     /// <summary>增量更新单个商品</summary>
@@ -108,18 +141,19 @@ public class IndexingService
                 Vectors = new Vectors  { Vector = new Vector { Data = { embedding } } },
                 Payload =
                 {
-                    ["goods_id"]     = sku.GoodsId,
-                    ["sku_id"]       = sku.SkuId,
-                    ["shop_id"]      = (long)sku.ShopId,
-                    ["name"]         = sku.Name       ?? "",
-                    ["spu_item_name"]= sku.SpuItemName ?? "",
-                    ["brand_name"]   = sku.BrandName  ?? "",
-                    ["goods_type"]   = sku.GoodsType  ?? "",
-                    ["check_status"] = sku.CheckStatus ?? "",
-                    ["price_sale"]   = (double)(sku.PriceSale ?? 0),
-                    ["price_market"] = (double)(sku.PriceMarket ?? 0),
-                    ["state"]        = (long)sku.State,
-                    ["auto_state"]   = (long)sku.AutoState
+                    ["goods_id"]      = sku.GoodsId,
+                    ["sku_id"]        = sku.SkuId,
+                    ["shop_id"]       = (long)sku.ShopId,
+                    ["name"]          = sku.Name        ?? "",
+                    ["spu_item_name"] = sku.SpuItemName ?? "",
+                    ["brand_name"]    = sku.BrandName   ?? "",
+                    ["goods_type"]    = sku.GoodsType   ?? "",
+                    ["check_status"]  = sku.CheckStatus ?? "",
+                    ["price_sale"]    = (double)(sku.PriceSale ?? 0),
+                    ["price_market"]  = (double)(sku.PriceMarket ?? 0),
+                    ["state"]         = (long)sku.State,
+                    ["auto_state"]    = (long)sku.AutoState,
+                    ["search_text"]   = text             // 存储用于增量对比
                 }
             }
         ], cancellationToken: ct);
@@ -141,6 +175,58 @@ public class IndexingService
     // ──────────────────────────────────────────────
     //  私有方法
     // ──────────────────────────────────────────────
+
+    /// <summary>
+    /// 从 Qdrant 加载所有已存在的点 ID + payload（用于增量对比）
+    /// </summary>
+    private async Task<Dictionary<long, (string SearchText, string Name)>> LoadExistingPointsAsync(
+        CancellationToken ct)
+    {
+        var result = new Dictionary<long, (string, string)>();
+
+        try
+        {
+            // scroll 遍历所有点，只取 id + search_text + name payload
+            var points = await _qdrant.ScrollAsync(
+                CollectionName,
+                limit: 1000,  // 分批读取
+                withPayload: true,
+                cancellationToken: ct);
+
+            while (points.Result.Points.Any())
+            {
+                foreach (var p in points.Result.Points)
+                {
+                    var searchText = p.Payload.ContainsKey("search_text")
+                        ? p.Payload["search_text"].StringValue
+                        : p.Payload.ContainsKey("name")
+                            ? p.Payload["name"].StringValue
+                            : "";
+                    var name = p.Payload.ContainsKey("name")
+                        ? p.Payload["name"].StringValue
+                        : "";
+
+                    result[(long)p.Id.Num] = (searchText, name);
+                }
+
+                // 获取下一批
+                if (string.IsNullOrEmpty(points.Result.NextPageOffset)) break;
+
+                points = await _qdrant.ScrollAsync(
+                    CollectionName,
+                    limit: 1000,
+                    offset: points.Result.NextPageOffset,
+                    withPayload: true,
+                    cancellationToken: ct);
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "加载 Qdrant 已有数据失败，将全量重建");
+        }
+
+        return result;
+    }
 
     private async Task ProcessBatchAsync(List<SkuDetail> batch, CancellationToken ct)
     {
@@ -165,7 +251,8 @@ public class IndexingService
                     ["price_sale"]    = (double)(pair.First.PriceSale ?? 0),
                     ["price_market"]  = (double)(pair.First.PriceMarket ?? 0),
                     ["state"]         = (long)pair.First.State,
-                    ["auto_state"]    = (long)pair.First.AutoState
+                    ["auto_state"]    = (long)pair.First.AutoState,
+                    ["search_text"]   = pair.Second            // 存文本用于增量对比
                 }
             })
             .ToList();
@@ -176,31 +263,24 @@ public class IndexingService
     /// <summary>
     /// 拼接用于 Embedding 的文本
     /// skudetail2 数据特点：Name 是最核心字段，其他字段经常为 NULL
-    /// 搜索文本 = Name（完整商品标题）+ SpuItemName + BrandName + GoodsType
     /// </summary>
     private static string BuildSearchText(SkuDetail sku)
     {
         var parts = new List<string>();
 
-        // Name 是商品全标题，包含品牌、品类、规格等所有信息，最重要
         if (!string.IsNullOrWhiteSpace(sku.Name))
             parts.Add(sku.Name);
 
-        // SpuItemName 补充规格信息
         if (!string.IsNullOrWhiteSpace(sku.SpuItemName))
             parts.Add(sku.SpuItemName);
 
-        // BrandName 补充品牌（有些 Name 里已包含品牌）
         if (!string.IsNullOrWhiteSpace(sku.BrandName) && sku.BrandId > 0)
             parts.Add(sku.BrandName);
 
-        // GoodsType 补充类型
         if (!string.IsNullOrWhiteSpace(sku.GoodsType))
             parts.Add(sku.GoodsType);
 
         return string.Join(" ", parts);
-        // 例: "言艺茶具套装紫砂功夫茶具陶瓷旅行整套茶壶茶杯茶海实木茶盘茶台"
-        // 例: "威克多Victor 胜利纳米7羽毛球拍 高刚碳素3U全面型羽毛球拍单拍 HX-7SP 金色 已穿线"
     }
 
     private async Task EnsureCollectionAsync(bool recreate = false)
@@ -224,7 +304,6 @@ public class IndexingService
                 OnDisk   = true
             });
 
-            // shop_id payload 索引，支持按店铺过滤
             await _qdrant.CreatePayloadIndexAsync(
                 CollectionName, "shop_id", PayloadSchemaType.Integer);
 
@@ -233,7 +312,7 @@ public class IndexingService
         }
         else
         {
-            _logger.LogInformation("集合已存在，增量更新模式: {Name}", CollectionName);
+            _logger.LogInformation("集合已存在，智能增量模式: {Name}", CollectionName);
         }
     }
 }
