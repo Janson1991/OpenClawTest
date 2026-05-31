@@ -1,8 +1,8 @@
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Qdrant.Client;
 using Qdrant.Client.Grpc;
-using SkuSearch.Application.DTOs;
 using SkuSearch.Application.Services;
 using SkuSearch.Domain.Entities;
 using SkuSearch.Infrastructure.Data;
@@ -41,7 +41,12 @@ public class IndexingService
 
         await EnsureCollectionAsync(recreate: false);
 
-        var total     = await Task.Run(() => _db.Skus.Count(s => s.IsActive), ct);
+        // skudetail2: 未删除 + 有名称的商品（State 和 AutoState 各种组合都可能有效）
+        var total = await Task.Run(() =>
+            _db.Skus.CountAsync(s =>
+                !s.Deleted &&
+                s.State == 1, ct), ct);
+
         var processed = 0;
         var failed    = 0;
 
@@ -49,12 +54,12 @@ public class IndexingService
 
         for (int page = 0; !ct.IsCancellationRequested; page++)
         {
-            var batch = _db.Skus
-                .Where(s => s.IsActive)
-                .OrderBy(s => s.Id)
+            var batch = await _db.Skus
+                .Where(s => !s.Deleted && s.State == 1)
+                .OrderBy(s => s.RecordId)
                 .Skip(page * BatchSize)
                 .Take(BatchSize)
-                .ToList();
+                .ToListAsync(ct);
 
             if (!batch.Any()) break;
 
@@ -71,7 +76,6 @@ public class IndexingService
                 continue;
             }
 
-            // 进度输出
             var percent = (double)processed / total * 100;
             var eta = processed > 0
                 ? TimeSpan.FromSeconds(sw.Elapsed.TotalSeconds / processed * (total - processed))
@@ -91,7 +95,7 @@ public class IndexingService
     }
 
     /// <summary>增量更新单个商品</summary>
-    public async Task UpsertSkuAsync(Sku sku, CancellationToken ct = default)
+    public async Task UpsertSkuAsync(SkuDetail sku, CancellationToken ct = default)
     {
         var text      = BuildSearchText(sku);
         var embedding = await _embedding.GetEmbeddingAsync(text, ct);
@@ -100,27 +104,32 @@ public class IndexingService
         [
             new PointStruct
             {
-                Id      = new PointId { Num = (ulong)sku.Id },
+                Id      = new PointId { Num = (ulong)sku.RecordId },
                 Vectors = new Vectors  { Vector = new Vector { Data = { embedding } } },
                 Payload =
                 {
-                    ["sku_code"]  = sku.SkuCode,
-                    ["name"]      = sku.Name,
-                    ["category"]  = sku.Category ?? "",
-                    ["brand"]     = sku.Brand    ?? "",
-                    ["tags"]      = sku.Tags     ?? "",
-                    ["price"]     = (double)sku.Price,
-                    ["image_url"] = sku.ImageUrl ?? ""
+                    ["goods_id"]     = sku.GoodsId,
+                    ["sku_id"]       = sku.SkuId,
+                    ["shop_id"]      = (long)sku.ShopId,
+                    ["name"]         = sku.Name       ?? "",
+                    ["spu_item_name"]= sku.SpuItemName ?? "",
+                    ["brand_name"]   = sku.BrandName  ?? "",
+                    ["goods_type"]   = sku.GoodsType  ?? "",
+                    ["check_status"] = sku.CheckStatus ?? "",
+                    ["price_sale"]   = (double)(sku.PriceSale ?? 0),
+                    ["price_market"] = (double)(sku.PriceMarket ?? 0),
+                    ["state"]        = (long)sku.State,
+                    ["auto_state"]   = (long)sku.AutoState
                 }
             }
         ], cancellationToken: ct);
     }
 
     /// <summary>删除商品向量</summary>
-    public async Task DeleteSkuAsync(long skuId, CancellationToken ct = default)
+    public async Task DeleteSkuAsync(long recordId, CancellationToken ct = default)
     {
         await _qdrant.DeleteAsync(CollectionName,
-            new PointId { Num = (ulong)skuId },
+            new PointId { Num = (ulong)recordId },
             cancellationToken: ct);
     }
 
@@ -132,7 +141,7 @@ public class IndexingService
     //  私有方法
     // ──────────────────────────────────────────────
 
-    private async Task ProcessBatchAsync(List<Sku> batch, CancellationToken ct)
+    private async Task ProcessBatchAsync(List<SkuDetail> batch, CancellationToken ct)
     {
         var texts      = batch.Select(BuildSearchText).ToList();
         var embeddings = await _embedding.GetBatchEmbeddingsAsync(texts, ct);
@@ -140,17 +149,22 @@ public class IndexingService
         var points = batch.Zip(embeddings)
             .Select(pair => new PointStruct
             {
-                Id      = new PointId { Num = (ulong)pair.First.Id },
+                Id      = new PointId { Num = (ulong)pair.First.RecordId },
                 Vectors = new Vectors  { Vector = new Vector { Data = { pair.Second } } },
                 Payload =
                 {
-                    ["sku_code"]  = pair.First.SkuCode,
-                    ["name"]      = pair.First.Name,
-                    ["category"]  = pair.First.Category ?? "",
-                    ["brand"]     = pair.First.Brand    ?? "",
-                    ["tags"]      = pair.First.Tags     ?? "",
-                    ["price"]     = (double)pair.First.Price,
-                    ["image_url"] = pair.First.ImageUrl ?? ""
+                    ["goods_id"]      = pair.First.GoodsId,
+                    ["sku_id"]        = pair.First.SkuId,
+                    ["shop_id"]       = (long)pair.First.ShopId,
+                    ["name"]          = pair.First.Name        ?? "",
+                    ["spu_item_name"] = pair.First.SpuItemName ?? "",
+                    ["brand_name"]    = pair.First.BrandName   ?? "",
+                    ["goods_type"]    = pair.First.GoodsType   ?? "",
+                    ["check_status"]  = pair.First.CheckStatus ?? "",
+                    ["price_sale"]    = (double)(pair.First.PriceSale ?? 0),
+                    ["price_market"]  = (double)(pair.First.PriceMarket ?? 0),
+                    ["state"]         = (long)pair.First.State,
+                    ["auto_state"]    = (long)pair.First.AutoState
                 }
             })
             .ToList();
@@ -159,23 +173,33 @@ public class IndexingService
     }
 
     /// <summary>
-    /// 拼接用于 Embedding 的文本，字段权重由顺序决定（靠前的权重更高）
+    /// 拼接用于 Embedding 的文本
+    /// skudetail2 数据特点：Name 是最核心字段，其他字段经常为 NULL
+    /// 搜索文本 = Name（完整商品标题）+ SpuItemName + BrandName + GoodsType
     /// </summary>
-    private static string BuildSearchText(Sku sku)
+    private static string BuildSearchText(SkuDetail sku)
     {
         var parts = new List<string>();
 
-        if (!string.IsNullOrWhiteSpace(sku.Name))     parts.Add(sku.Name);
-        if (!string.IsNullOrWhiteSpace(sku.Category)) parts.Add(sku.Category);
-        if (!string.IsNullOrWhiteSpace(sku.Brand))    parts.Add(sku.Brand);
-        if (!string.IsNullOrWhiteSpace(sku.Tags))     parts.Add(sku.Tags);
+        // Name 是商品全标题，包含品牌、品类、规格等所有信息，最重要
+        if (!string.IsNullOrWhiteSpace(sku.Name))
+            parts.Add(sku.Name);
 
-        // 描述太长截断，避免超出 token 限制
-        if (!string.IsNullOrWhiteSpace(sku.Description))
-            parts.Add(sku.Description[..Math.Min(300, sku.Description.Length)]);
+        // SpuItemName 补充规格信息
+        if (!string.IsNullOrWhiteSpace(sku.SpuItemName))
+            parts.Add(sku.SpuItemName);
+
+        // BrandName 补充品牌（有些 Name 里已包含品牌）
+        if (!string.IsNullOrWhiteSpace(sku.BrandName) && sku.BrandId > 0)
+            parts.Add(sku.BrandName);
+
+        // GoodsType 补充类型
+        if (!string.IsNullOrWhiteSpace(sku.GoodsType))
+            parts.Add(sku.GoodsType);
 
         return string.Join(" ", parts);
-        // 例: "三人帐篷 户外装备 牧高笛 帐篷,露营,防雨,三季 适合3-4人家庭野外露营..."
+        // 例: "言艺茶具套装紫砂功夫茶具陶瓷旅行整套茶壶茶杯茶海实木茶盘茶台"
+        // 例: "威克多Victor 胜利纳米7羽毛球拍 高刚碳素3U全面型羽毛球拍单拍 HX-7SP 金色 已穿线"
     }
 
     private async Task EnsureCollectionAsync(bool recreate = false)
@@ -195,13 +219,13 @@ public class IndexingService
             await _qdrant.CreateCollectionAsync(CollectionName, new VectorParams
             {
                 Size     = VectorSize,
-                Distance = Distance.Cosine,   // 余弦相似度（推荐文本）
-                OnDisk   = true               // 百万级数据写磁盘，节省内存
+                Distance = Distance.Cosine,
+                OnDisk   = true
             });
 
-            // 建 category payload 索引，支持按分类过滤
+            // shop_id payload 索引，支持按店铺过滤
             await _qdrant.CreatePayloadIndexAsync(
-                CollectionName, "category", PayloadSchemaType.Keyword);
+                CollectionName, "shop_id", PayloadSchemaType.Integer);
 
             _logger.LogInformation("Qdrant 集合创建成功: {Name} (维度={Size})",
                 CollectionName, VectorSize);

@@ -3,20 +3,27 @@ import axios from 'axios'
 export interface SearchRequest {
   query:    string
   topK?:    number
-  category?: string
+  shopId?:  number
+  uCatId1?: number
   minScore?: number
 }
 
 export interface SkuSearchItem {
-  id:       number
-  skuCode:  string
-  name:     string
-  category: string | null
-  brand:    string | null
-  price:    number
-  imageUrl: string | null
-  score:    number
-  source:   string
+  recordId:    number
+  goodsId:     string
+  skuId:       string
+  shopId:      number
+  name:        string | null
+  spuItemName: string | null
+  brandName:   string | null
+  priceSale:   number | null
+  priceMarket: number | null
+  goodsType:   string | null
+  checkStatus: string | null
+  state:       number
+  autoState:   number
+  score:       number
+  source:      string
 }
 
 export interface ParsedQuery {

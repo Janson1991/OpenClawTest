@@ -1,45 +1,52 @@
 <template>
   <el-card class="sku-card" shadow="hover" :body-style="{ padding: '0' }">
-    <!-- 商品图片 -->
+    <!-- 商品图片（skudetail2 无图片字段，展示默认占位） -->
     <div class="img-wrap">
-      <el-image
-        :src="item.imageUrl || defaultImg"
-        :alt="item.name"
-        fit="cover"
-        lazy
-        class="sku-img"
-      >
-        <template #error>
-          <div class="img-placeholder">
-            <el-icon size="32" color="#dcdfe6"><Picture /></el-icon>
-          </div>
-        </template>
-      </el-image>
+      <div class="img-placeholder">
+        <el-icon size="40" color="#c0c4cc"><Goods /></el-icon>
+        <span class="goods-type" v-if="item.goodsType">{{ item.goodsType }}</span>
+      </div>
 
       <!-- 相似度得分徽标 -->
-      <el-tag
-        class="score-badge"
-        size="small"
-        :type="scoreType"
-        effect="dark"
-      >
+      <el-tag class="score-badge" size="small" :type="scoreType" effect="dark">
         {{ (item.score * 100).toFixed(0) }}%
+      </el-tag>
+
+      <!-- 上架状态 -->
+      <el-tag
+        class="status-badge"
+        size="small"
+        :type="item.state === 1 && item.autoState === 1 ? 'success' : 'info'"
+        effect="plain"
+      >
+        {{ item.state === 1 && item.autoState === 1 ? '上架' : '下架' }}
       </el-tag>
     </div>
 
     <!-- 商品信息 -->
     <div class="sku-info">
-      <p class="sku-name" :title="item.name">{{ item.name }}</p>
+      <p class="sku-name" :title="item.name">{{ item.name || '暂无名称' }}</p>
+
+      <p class="sku-spec" v-if="item.spuItemName" :title="item.spuItemName">
+        {{ item.spuItemName }}
+      </p>
 
       <div class="sku-meta">
-        <el-tag v-if="item.category" size="small" type="info">
-          {{ item.category }}
+        <el-tag v-if="item.brandName" size="small" type="info" effect="plain">
+          {{ item.brandName }}
         </el-tag>
-        <span v-if="item.brand" class="brand">{{ item.brand }}</span>
+        <span class="sku-id" :title="'SKU: ' + item.skuId">
+          SKU: {{ item.skuId?.slice(0, 8) }}...
+        </span>
       </div>
 
       <div class="sku-footer">
-        <span class="price">¥{{ item.price.toFixed(2) }}</span>
+        <div class="price-group">
+          <span class="price-sale" v-if="item.priceSale">¥{{ item.priceSale.toFixed(2) }}</span>
+          <span class="price-market" v-if="item.priceMarket && item.priceMarket > (item.priceSale || 0)">
+            ¥{{ item.priceMarket.toFixed(2) }}
+          </span>
+        </div>
         <el-tag size="small" :type="sourceType" effect="plain" class="source-tag">
           {{ sourceLabel }}
         </el-tag>
@@ -53,8 +60,6 @@ import { computed } from 'vue'
 import type { SkuSearchItem } from '@/api/search'
 
 const props = defineProps<{ item: SkuSearchItem }>()
-
-const defaultImg = 'https://via.placeholder.com/200x200?text=No+Image'
 
 const scoreType = computed(() => {
   if (props.item.score >= 0.8) return 'success'
@@ -92,18 +97,23 @@ const sourceLabel = computed(() => {
   padding-top: 100%;
   background: #f5f7fa;
 }
-.sku-img {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-}
 .img-placeholder {
   position: absolute;
   inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #f5f7fa;
+  gap: 6px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e7ed 100%);
+}
+.goods-type {
+  font-size: 11px;
+  color: #909399;
+  max-width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .score-badge {
@@ -111,12 +121,16 @@ const sourceLabel = computed(() => {
   top: 8px; right: 8px;
   opacity: 0.9;
 }
+.status-badge {
+  position: absolute;
+  top: 8px; left: 8px;
+}
 
 .sku-info {
   padding: 10px 12px 12px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 .sku-name {
   margin: 0;
@@ -129,12 +143,23 @@ const sourceLabel = computed(() => {
   overflow: hidden;
   color: #303133;
 }
+.sku-spec {
+  margin: 0;
+  font-size: 11px;
+  color: #909399;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .sku-meta {
   display: flex;
   align-items: center;
   gap: 6px;
 }
-.brand { font-size: 11px; color: #909399; }
+.sku-id {
+  font-size: 10px;
+  color: #c0c4cc;
+}
 
 .sku-footer {
   display: flex;
@@ -142,10 +167,20 @@ const sourceLabel = computed(() => {
   justify-content: space-between;
   margin-top: 2px;
 }
-.price {
+.price-group {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.price-sale {
   font-size: 16px;
   font-weight: 700;
   color: #f56c6c;
+}
+.price-market {
+  font-size: 11px;
+  color: #c0c4cc;
+  text-decoration: line-through;
 }
 .source-tag { font-size: 10px; }
 </style>

@@ -1,6 +1,9 @@
 # SKU 智能搜索
 
-基于 **.NET 8 Web API + Vue 3** 构建的商品智能搜索工具，支持：
+基于 **.NET 8 Web API + Vue 3** 构建的商品智能搜索工具。  
+📖 **架构图与流程图** → [docs/architecture.md](docs/architecture.md)
+
+支持：
 - 🧠 **AI 语义解析**：理解"户外用品"→自动扩展帐篷、睡袋、露营椅等
 - 🔍 **向量语义搜索**：Qdrant 本地向量库，毫秒级响应
 - 📝 **全文关键词搜索**：MySQL ngram 中文分词，精确匹配
