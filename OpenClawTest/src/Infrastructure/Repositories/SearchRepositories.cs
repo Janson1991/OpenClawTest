@@ -4,6 +4,7 @@ using Qdrant.Client.Grpc;
 using SkuSearch.Application.DTOs;
 using SkuSearch.Application.Services;
 using SkuSearch.Infrastructure.Data;
+using SkuSearch.Infrastructure.Services;
 
 namespace SkuSearch.Infrastructure.Repositories;
 
@@ -27,7 +28,7 @@ public class QdrantVectorSearchRepository : IVectorSearchRepository
                           Field = new FieldCondition
                           {
                               Key   = "shop_id",
-                              Match = new Match { Integer = (ulong)shopId.Value }
+                              Match = new Match { Integer = shopId.Value }
                           }
                       }
                   }
@@ -40,7 +41,7 @@ public class QdrantVectorSearchRepository : IVectorSearchRepository
             filter:         filter,
             limit:          (ulong)topK,
             scoreThreshold: scoreThreshold,
-            withPayload:    true,
+            payloadSelector:    true,
             cancellationToken: ct);
 
         return hits.Select(h => new SkuSearchItem(

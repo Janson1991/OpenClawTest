@@ -15,7 +15,7 @@ public class OpenAiEmbeddingService : IEmbeddingService
 
     public OpenAiEmbeddingService(HttpClient http, IConfiguration config)
     {
-        _http  = http;
+        _http  = new HttpClient();
         _model = config["AI:EmbeddingModel"] ?? "text-embedding-3-small";
 
         _http.BaseAddress = new Uri(config["AI:BaseUrl"] ?? "https://api.openai.com");
@@ -31,7 +31,7 @@ public class OpenAiEmbeddingService : IEmbeddingService
 
     public async Task<List<float[]>> GetBatchEmbeddingsAsync(List<string> texts, CancellationToken ct = default)
     {
-        var response = await _http.PostAsJsonAsync("/v1/embeddings", new
+        var response = await _http.PostAsJsonAsync("api/paas/v4//embeddings", new
         {
             model = _model,
             input = texts
@@ -79,7 +79,7 @@ public class OllamaEmbeddingService : IEmbeddingService
     public async Task<List<float[]>> GetBatchEmbeddingsAsync(List<string> texts, CancellationToken ct = default)
     {
         // Ollama /api/embed 支持批量输入
-        var response = await _http.PostAsJsonAsync("/api/embed", new
+        var response = await _http.PostAsJsonAsync("/embeddings", new
         {
             model = _model,
             input = texts

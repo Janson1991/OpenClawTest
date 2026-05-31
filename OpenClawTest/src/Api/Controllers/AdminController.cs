@@ -88,7 +88,7 @@ public class AdminController : ControllerBase
                 vectorCount   = info.VectorsCount,
                 pointCount    = info.PointsCount,
                 segmentsCount = info.SegmentsCount,
-                diskUsageMb   = info.DiskDataSize / 1024 / 1024
+              //  diskUsageMb   = info.DiskDataSize / 1024 / 1024
             });
         }
         catch (Exception ex)

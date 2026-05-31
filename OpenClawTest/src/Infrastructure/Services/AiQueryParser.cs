@@ -46,7 +46,7 @@ public class AiQueryParser : IAiQueryParser
                 max_tokens  = 512
             };
 
-            var response = await _http.PostAsJsonAsync("/v1/chat/completions", requestBody, ct);
+            var response = await _http.PostAsJsonAsync("api/paas/v4/chat/completions", requestBody, ct);
             response.EnsureSuccessStatusCode();
 
             var json    = await response.Content.ReadAsStringAsync(ct);

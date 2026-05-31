@@ -130,10 +130,7 @@ public class IndexingService
     {
         await _qdrant.DeleteAsync(
             CollectionName,
-            new PointIdsList
-            {
-                Ids = { new PointId { Num = (ulong)recordId } }
-            },
+           (ulong)recordId,
             cancellationToken: ct);
     }
 

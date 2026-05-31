@@ -1,0 +1,801 @@
+2026-05-31 14:29:55.093 +08:00 [INF] Now listening on: https://localhost:13778
+2026-05-31 14:29:55.129 +08:00 [INF] Now listening on: http://localhost:13779
+2026-05-31 14:29:55.198 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 14:29:55.199 +08:00 [INF] Hosting environment: Development
+2026-05-31 14:29:55.199 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 14:29:57.958 +08:00 [INF] Request starting HTTP/2 GET https://localhost:13778/ - null null
+2026-05-31 14:29:58.137 +08:00 [INF] Request finished HTTP/2 GET https://localhost:13778/ - 404 null null 183.8128ms
+2026-05-31 14:29:58.144 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:13778/, Response status code: 404
+2026-05-31 14:30:03.982 +08:00 [INF] Request starting HTTP/2 GET https://localhost:13778/swagger - null null
+2026-05-31 14:30:03.990 +08:00 [INF] Request finished HTTP/2 GET https://localhost:13778/swagger - 301 null null 9.0712ms
+2026-05-31 14:30:03.993 +08:00 [INF] Request starting HTTP/2 GET https://localhost:13778/swagger/index.html - null null
+2026-05-31 14:30:04.091 +08:00 [INF] Request starting HTTP/2 GET https://localhost:13778/swagger/swagger-ui.css - null null
+2026-05-31 14:30:04.091 +08:00 [INF] Request starting HTTP/2 GET https://localhost:13778/swagger/swagger-ui-bundle.js - null null
+2026-05-31 14:30:04.091 +08:00 [INF] Request starting HTTP/2 GET https://localhost:13778/swagger/swagger-ui-standalone-preset.js - null null
+2026-05-31 14:30:04.093 +08:00 [INF] Request finished HTTP/2 GET https://localhost:13778/swagger/index.html - 200 null text/html;charset=utf-8 100.1406ms
+2026-05-31 14:30:04.122 +08:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-05-31 14:30:04.123 +08:00 [INF] Request finished HTTP/2 GET https://localhost:13778/swagger/swagger-ui.css - 200 144929 text/css 32.1287ms
+2026-05-31 14:30:04.138 +08:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-05-31 14:30:04.142 +08:00 [INF] Request finished HTTP/2 GET https://localhost:13778/swagger/swagger-ui-standalone-preset.js - 200 312163 text/javascript 50.3266ms
+2026-05-31 14:30:04.147 +08:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-05-31 14:30:04.149 +08:00 [INF] Request finished HTTP/2 GET https://localhost:13778/swagger/swagger-ui-bundle.js - 200 1061536 text/javascript 57.4887ms
+2026-05-31 14:30:04.174 +08:00 [INF] Request starting HTTP/2 GET https://localhost:13778/_vs/browserLink - null null
+2026-05-31 14:30:04.174 +08:00 [INF] Request starting HTTP/2 GET https://localhost:13778/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-31 14:30:04.184 +08:00 [INF] Request finished HTTP/2 GET https://localhost:13778/_framework/aspnetcore-browser-refresh.js - 200 14931 application/javascript; charset=utf-8 10.8519ms
+2026-05-31 14:30:04.247 +08:00 [INF] Request finished HTTP/2 GET https://localhost:13778/_vs/browserLink - 200 null text/javascript; charset=UTF-8 73.3868ms
+2026-05-31 14:30:04.424 +08:00 [INF] Request starting HTTP/2 GET https://localhost:13778/swagger/v1/swagger.json - null null
+2026-05-31 14:30:04.437 +08:00 [INF] Request finished HTTP/2 GET https://localhost:13778/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.2861ms
+2026-05-31 14:30:04.501 +08:00 [INF] Request starting HTTP/2 GET https://localhost:13778/swagger/favicon-32x32.png - null null
+2026-05-31 14:30:04.503 +08:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-05-31 14:30:04.505 +08:00 [INF] Request finished HTTP/2 GET https://localhost:13778/swagger/favicon-32x32.png - 200 628 image/png 4.1405ms
+2026-05-31 14:30:59.810 +08:00 [INF] Now listening on: https://localhost:13778
+2026-05-31 14:30:59.840 +08:00 [INF] Now listening on: http://localhost:13779
+2026-05-31 14:30:59.884 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 14:30:59.885 +08:00 [INF] Hosting environment: Development
+2026-05-31 14:30:59.886 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 14:31:00.525 +08:00 [INF] Request starting HTTP/2 GET https://localhost:13778/ - null null
+2026-05-31 14:31:00.650 +08:00 [INF] Request finished HTTP/2 GET https://localhost:13778/ - 404 null null 129.4424ms
+2026-05-31 14:31:00.656 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:13778/, Response status code: 404
+2026-05-31 14:33:52.570 +08:00 [INF] Now listening on: https://localhost:5001
+2026-05-31 14:33:52.601 +08:00 [INF] Now listening on: http://localhost:5000
+2026-05-31 14:33:52.651 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 14:33:52.651 +08:00 [INF] Hosting environment: Development
+2026-05-31 14:33:52.652 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 14:33:53.268 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - null null
+2026-05-31 14:33:53.358 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - 404 null null 93.1175ms
+2026-05-31 14:33:53.364 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5001/, Response status code: 404
+2026-05-31 14:34:17.514 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 14:34:17.520 +08:00 [INF] CORS policy execution successful.
+2026-05-31 14:34:17.523 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 14:34:17.559 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 14:34:18.259 +08:00 [INF] Start processing HTTP request POST https://token-plan-cn.xiaomimimo.com/v1/chat/completions
+2026-05-31 14:34:18.261 +08:00 [INF] Sending HTTP request POST https://token-plan-cn.xiaomimimo.com/v1/chat/completions
+2026-05-31 14:34:18.531 +08:00 [INF] Received HTTP response headers after 267.2498ms - 401
+2026-05-31 14:34:18.533 +08:00 [INF] End processing HTTP request after 276.0143ms - 401
+2026-05-31 14:34:18.607 +08:00 [WRN] AI 解析失败，降级为关键词直接搜索
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 401 (Unauthorized).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.AiQueryParser.ParseAsync(String userInput, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\AiQueryParser.cs:line 50
+2026-05-31 14:34:18.626 +08:00 [INF] AI 解析 [户外用品] → 关键词:户外用品 同义词:
+2026-05-31 14:34:18.631 +08:00 [INF] Start processing HTTP request POST https://token-plan-cn.xiaomimimo.com/v1/embeddings
+2026-05-31 14:34:18.632 +08:00 [INF] Sending HTTP request POST https://token-plan-cn.xiaomimimo.com/v1/embeddings
+2026-05-31 14:34:18.772 +08:00 [INF] Received HTTP response headers after 139.3878ms - 404
+2026-05-31 14:34:18.774 +08:00 [INF] End processing HTTP request after 142.922ms - 404
+2026-05-31 14:34:18.901 +08:00 [INF] Executed action SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api) in 1337.1498ms
+2026-05-31 14:34:18.904 +08:00 [INF] Executed endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 14:34:18.907 +08:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 404 (Not Found).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetBatchEmbeddingsAsync(List`1 texts, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 39
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetEmbeddingAsync(String text, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 28
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 42
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 14:34:18.924 +08:00 [ERR] 未处理异常: /api/search
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 404 (Not Found).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetBatchEmbeddingsAsync(List`1 texts, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 39
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetEmbeddingAsync(String text, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 28
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 42
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 14:34:18.960 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/search - 500 null application/json; charset=utf-8 1446.3561ms
+2026-05-31 14:34:55.781 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 14:34:55.789 +08:00 [INF] CORS policy execution successful.
+2026-05-31 14:34:55.790 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 14:34:55.790 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 14:35:29.459 +08:00 [INF] Start processing HTTP request POST https://token-plan-cn.xiaomimimo.com/v1/chat/completions
+2026-05-31 14:35:29.461 +08:00 [INF] Sending HTTP request POST https://token-plan-cn.xiaomimimo.com/v1/chat/completions
+2026-05-31 14:35:29.714 +08:00 [INF] Received HTTP response headers after 251.5055ms - 401
+2026-05-31 14:35:29.716 +08:00 [INF] End processing HTTP request after 256.429ms - 401
+2026-05-31 14:35:49.802 +08:00 [INF] Now listening on: https://localhost:5001
+2026-05-31 14:35:49.840 +08:00 [INF] Now listening on: http://localhost:5000
+2026-05-31 14:35:49.888 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 14:35:49.888 +08:00 [INF] Hosting environment: Development
+2026-05-31 14:35:49.889 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 14:35:50.449 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - null null
+2026-05-31 14:35:50.548 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - 404 null null 104.1032ms
+2026-05-31 14:35:50.552 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5001/, Response status code: 404
+2026-05-31 14:35:55.269 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 14:35:55.278 +08:00 [INF] CORS policy execution successful.
+2026-05-31 14:35:55.281 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 14:35:55.306 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 14:35:58.451 +08:00 [INF] Start processing HTTP request POST https://token-plan-cn.xiaomimimo.com/v1/chat/completions
+2026-05-31 14:35:58.454 +08:00 [INF] Sending HTTP request POST https://token-plan-cn.xiaomimimo.com/v1/chat/completions
+2026-05-31 14:35:58.779 +08:00 [INF] Received HTTP response headers after 322.9889ms - 401
+2026-05-31 14:35:58.781 +08:00 [INF] End processing HTTP request after 331.748ms - 401
+2026-05-31 14:35:58.820 +08:00 [WRN] AI 解析失败，降级为关键词直接搜索
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 401 (Unauthorized).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.AiQueryParser.ParseAsync(String userInput, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\AiQueryParser.cs:line 50
+2026-05-31 14:35:59.272 +08:00 [INF] AI 解析 [户外用品] → 关键词:户外用品 同义词:
+2026-05-31 14:36:00.229 +08:00 [INF] Start processing HTTP request POST https://token-plan-cn.xiaomimimo.com/v1/embeddings
+2026-05-31 14:36:00.231 +08:00 [INF] Sending HTTP request POST https://token-plan-cn.xiaomimimo.com/v1/embeddings
+2026-05-31 14:36:00.352 +08:00 [INF] Received HTTP response headers after 120.342ms - 404
+2026-05-31 14:36:00.354 +08:00 [INF] End processing HTTP request after 124.5752ms - 404
+2026-05-31 14:36:00.507 +08:00 [INF] Executed action SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api) in 5196.6414ms
+2026-05-31 14:36:00.509 +08:00 [INF] Executed endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 14:36:00.512 +08:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 404 (Not Found).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetBatchEmbeddingsAsync(List`1 texts, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 39
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetEmbeddingAsync(String text, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 28
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 42
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 14:36:00.525 +08:00 [ERR] 未处理异常: /api/search
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 404 (Not Found).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetBatchEmbeddingsAsync(List`1 texts, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 39
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetEmbeddingAsync(String text, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 28
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 42
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 14:36:00.545 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/search - 500 null application/json; charset=utf-8 5276.4382ms
+2026-05-31 14:36:15.767 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 14:36:15.775 +08:00 [INF] CORS policy execution successful.
+2026-05-31 14:36:15.779 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 14:36:15.782 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 14:36:53.253 +08:00 [INF] Start processing HTTP request POST https://token-plan-cn.xiaomimimo.com/v1/chat/completions
+2026-05-31 14:36:53.254 +08:00 [INF] Sending HTTP request POST https://token-plan-cn.xiaomimimo.com/v1/chat/completions
+2026-05-31 14:36:53.467 +08:00 [INF] Received HTTP response headers after 212.0137ms - 401
+2026-05-31 14:36:53.468 +08:00 [INF] End processing HTTP request after 215.6552ms - 401
+2026-05-31 14:36:53.496 +08:00 [WRN] AI 解析失败，降级为关键词直接搜索
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 401 (Unauthorized).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.AiQueryParser.ParseAsync(String userInput, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\AiQueryParser.cs:line 50
+2026-05-31 14:37:04.102 +08:00 [INF] AI 解析 [户外用品] → 关键词:户外用品 同义词:
+2026-05-31 14:37:06.823 +08:00 [INF] Start processing HTTP request POST https://token-plan-cn.xiaomimimo.com/v1/embeddings
+2026-05-31 14:37:06.825 +08:00 [INF] Sending HTTP request POST https://token-plan-cn.xiaomimimo.com/v1/embeddings
+2026-05-31 14:37:06.947 +08:00 [INF] Received HTTP response headers after 120.9519ms - 404
+2026-05-31 14:37:06.949 +08:00 [INF] End processing HTTP request after 125.7345ms - 404
+2026-05-31 14:37:07.093 +08:00 [INF] Executed action SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api) in 51307.8244ms
+2026-05-31 14:37:07.094 +08:00 [INF] Executed endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 14:37:07.095 +08:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 404 (Not Found).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetBatchEmbeddingsAsync(List`1 texts, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 39
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetEmbeddingAsync(String text, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 28
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 42
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 14:37:07.103 +08:00 [ERR] 未处理异常: /api/search
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 404 (Not Found).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetBatchEmbeddingsAsync(List`1 texts, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 39
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetEmbeddingAsync(String text, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 28
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 42
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 14:37:07.116 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/search - 500 null application/json; charset=utf-8 51348.8169ms
+2026-05-31 14:52:27.918 +08:00 [INF] Now listening on: https://localhost:5001
+2026-05-31 14:52:27.952 +08:00 [INF] Now listening on: http://localhost:5000
+2026-05-31 14:52:28.264 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 14:52:28.265 +08:00 [INF] Hosting environment: Development
+2026-05-31 14:52:28.266 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 14:52:28.463 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - null null
+2026-05-31 14:52:28.565 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - 404 null null 107.7899ms
+2026-05-31 14:52:28.569 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5001/, Response status code: 404
+2026-05-31 14:52:46.365 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 14:52:46.373 +08:00 [INF] CORS policy execution successful.
+2026-05-31 14:52:46.376 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 14:52:46.400 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 14:52:54.522 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/v1/chat/completions
+2026-05-31 14:52:54.524 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/v1/chat/completions
+2026-05-31 14:52:54.716 +08:00 [INF] Received HTTP response headers after 189.3287ms - 405
+2026-05-31 14:52:54.718 +08:00 [INF] End processing HTTP request after 197.8885ms - 405
+2026-05-31 14:52:54.773 +08:00 [WRN] AI 解析失败，降级为关键词直接搜索
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 405 (Not Allowed).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.AiQueryParser.ParseAsync(String userInput, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\AiQueryParser.cs:line 50
+2026-05-31 14:53:07.268 +08:00 [INF] AI 解析 [户外用品] → 关键词:户外用品 同义词:
+2026-05-31 14:53:12.595 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/v1/embeddings
+2026-05-31 14:53:12.596 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/v1/embeddings
+2026-05-31 14:53:12.770 +08:00 [INF] Received HTTP response headers after 173.0511ms - 405
+2026-05-31 14:53:12.771 +08:00 [INF] End processing HTTP request after 176.4804ms - 405
+2026-05-31 14:53:12.923 +08:00 [INF] Executed action SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api) in 26518.9834ms
+2026-05-31 14:53:12.926 +08:00 [INF] Executed endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 14:53:12.928 +08:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 405 (Not Allowed).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetBatchEmbeddingsAsync(List`1 texts, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 39
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetEmbeddingAsync(String text, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 28
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 42
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 14:53:12.936 +08:00 [ERR] 未处理异常: /api/search
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 405 (Not Allowed).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetBatchEmbeddingsAsync(List`1 texts, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 39
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetEmbeddingAsync(String text, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 28
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 42
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 14:53:12.948 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/search - 500 null application/json; charset=utf-8 26583.5799ms
+2026-05-31 14:53:41.196 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 14:53:41.200 +08:00 [INF] CORS policy execution successful.
+2026-05-31 14:53:41.201 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 14:53:41.206 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 14:53:44.553 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/v1/chat/completions
+2026-05-31 14:53:44.555 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/v1/chat/completions
+2026-05-31 14:53:44.691 +08:00 [INF] Received HTTP response headers after 136.01ms - 405
+2026-05-31 14:53:44.693 +08:00 [INF] End processing HTTP request after 139.3685ms - 405
+2026-05-31 14:53:44.722 +08:00 [WRN] AI 解析失败，降级为关键词直接搜索
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 405 (Not Allowed).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.AiQueryParser.ParseAsync(String userInput, CancellationToken ct)
+2026-05-31 14:53:45.315 +08:00 [INF] AI 解析 [户外用品] → 关键词:户外用品 同义词:
+2026-05-31 14:53:46.028 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/embeddings
+2026-05-31 14:53:46.030 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/embeddings
+2026-05-31 14:53:46.155 +08:00 [INF] Received HTTP response headers after 124.5416ms - 405
+2026-05-31 14:53:46.157 +08:00 [INF] End processing HTTP request after 128.6452ms - 405
+2026-05-31 14:53:46.311 +08:00 [INF] Executed action SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api) in 5102.224ms
+2026-05-31 14:53:46.312 +08:00 [INF] Executed endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 14:53:46.313 +08:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 405 (Not Allowed).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetBatchEmbeddingsAsync(List`1 texts, CancellationToken ct)
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetEmbeddingAsync(String text, CancellationToken ct)
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 42
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 14:53:46.317 +08:00 [ERR] 未处理异常: /api/search
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 405 (Not Allowed).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetBatchEmbeddingsAsync(List`1 texts, CancellationToken ct)
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetEmbeddingAsync(String text, CancellationToken ct)
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 42
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 14:53:46.322 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/search - 500 null application/json; charset=utf-8 5126.6855ms
+2026-05-31 14:54:01.995 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 14:54:01.999 +08:00 [INF] CORS policy execution successful.
+2026-05-31 14:54:02.000 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 14:54:02.001 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 14:54:09.154 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/v1/chat/completions
+2026-05-31 14:54:09.156 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/v1/chat/completions
+2026-05-31 14:54:09.302 +08:00 [INF] Received HTTP response headers after 145.2328ms - 405
+2026-05-31 14:54:09.304 +08:00 [INF] End processing HTTP request after 150.11ms - 405
+2026-05-31 14:56:28.051 +08:00 [INF] Now listening on: https://localhost:5001
+2026-05-31 14:56:28.084 +08:00 [INF] Now listening on: http://localhost:5000
+2026-05-31 14:56:28.176 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 14:56:28.177 +08:00 [INF] Hosting environment: Development
+2026-05-31 14:56:28.177 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 14:56:28.662 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - null null
+2026-05-31 14:56:28.808 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - 404 null null 155.6496ms
+2026-05-31 14:56:28.848 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5001/, Response status code: 404
+2026-05-31 14:56:34.970 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 14:56:34.981 +08:00 [INF] CORS policy execution successful.
+2026-05-31 14:56:34.983 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 14:56:35.006 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 14:56:38.062 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/chat/completions
+2026-05-31 14:56:38.065 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/chat/completions
+2026-05-31 14:56:38.240 +08:00 [INF] Received HTTP response headers after 172.6246ms - 405
+2026-05-31 14:56:38.241 +08:00 [INF] End processing HTTP request after 181.0826ms - 405
+2026-05-31 14:56:38.282 +08:00 [WRN] AI 解析失败，降级为关键词直接搜索
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 405 (Not Allowed).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.AiQueryParser.ParseAsync(String userInput, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\AiQueryParser.cs:line 50
+2026-05-31 14:56:56.051 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/chat/completions
+2026-05-31 14:56:56.053 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/chat/completions
+2026-05-31 14:56:56.180 +08:00 [INF] Received HTTP response headers after 126.6886ms - 405
+2026-05-31 14:56:56.182 +08:00 [INF] End processing HTTP request after 130.5965ms - 405
+2026-05-31 15:01:39.724 +08:00 [INF] Now listening on: https://localhost:5001
+2026-05-31 15:01:39.758 +08:00 [INF] Now listening on: http://localhost:5000
+2026-05-31 15:01:39.804 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 15:01:39.805 +08:00 [INF] Hosting environment: Development
+2026-05-31 15:01:39.805 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 15:01:40.243 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - null null
+2026-05-31 15:01:40.379 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - 404 null null 141.0356ms
+2026-05-31 15:01:40.390 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5001/, Response status code: 404
+2026-05-31 15:01:46.430 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 15:01:46.440 +08:00 [INF] CORS policy execution successful.
+2026-05-31 15:01:46.443 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 15:01:46.479 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 15:02:17.131 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/chat/completions
+2026-05-31 15:02:17.134 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/chat/completions
+2026-05-31 15:02:17.312 +08:00 [INF] Received HTTP response headers after 175.4881ms - 405
+2026-05-31 15:02:17.313 +08:00 [INF] End processing HTTP request after 183.8399ms - 405
+2026-05-31 15:04:54.290 +08:00 [INF] Now listening on: https://localhost:5001
+2026-05-31 15:04:54.329 +08:00 [INF] Now listening on: http://localhost:5000
+2026-05-31 15:04:54.391 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 15:04:54.393 +08:00 [INF] Hosting environment: Development
+2026-05-31 15:04:54.394 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 15:04:54.673 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - null null
+2026-05-31 15:04:54.813 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - 404 null null 144.113ms
+2026-05-31 15:04:54.818 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5001/, Response status code: 404
+2026-05-31 15:04:58.549 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 15:04:58.559 +08:00 [INF] CORS policy execution successful.
+2026-05-31 15:04:58.567 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 15:04:58.598 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 15:05:05.702 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 15:05:05.709 +08:00 [INF] CORS policy execution successful.
+2026-05-31 15:05:05.710 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 15:05:05.711 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 15:05:05.716 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/chat/completions
+2026-05-31 15:05:05.718 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/chat/completions
+2026-05-31 15:05:06.363 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/chat/completions
+2026-05-31 15:05:06.364 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/chat/completions
+2026-05-31 15:05:06.541 +08:00 [INF] Received HTTP response headers after 820.5831ms - 405
+2026-05-31 15:05:06.544 +08:00 [INF] End processing HTTP request after 830.0239ms - 405
+2026-05-31 15:05:06.544 +08:00 [INF] Received HTTP response headers after 179.659ms - 405
+2026-05-31 15:06:02.796 +08:00 [INF] End processing HTTP request after 56432.859ms - 405
+2026-05-31 15:06:05.124 +08:00 [WRN] AI 解析失败，降级为关键词直接搜索
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 405 (Not Allowed).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.AiQueryParser.ParseAsync(String userInput, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\AiQueryParser.cs:line 50
+2026-05-31 15:06:05.164 +08:00 [WRN] AI 解析失败，降级为关键词直接搜索
+System.Threading.Tasks.TaskCanceledException: The request was canceled due to the configured HttpClient.Timeout of 15 seconds elapsing.
+ ---> System.TimeoutException: A task was canceled.
+ ---> System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Net.Http.HttpConnectionResponseContent.<SerializeToStreamAsync>g__Impl|6_0(Stream stream, CancellationToken cancellationToken)
+   at System.Net.Http.HttpContent.LoadIntoBufferAsyncCore(Task serializeToStreamTask, MemoryStream tempBuffer)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpClient.HandleFailure(Exception e, Boolean telemetryStarted, HttpResponseMessage response, CancellationTokenSource cts, CancellationToken cancellationToken, CancellationTokenSource pendingRequestsCts)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at SkuSearch.Infrastructure.Services.AiQueryParser.ParseAsync(String userInput, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\AiQueryParser.cs:line 49
+2026-05-31 15:06:06.125 +08:00 [INF] AI 解析 [户外用品] → 关键词:户外用品 同义词:
+2026-05-31 15:06:07.672 +08:00 [INF] AI 解析 [户外用品] → 关键词:户外用品 同义词:
+2026-05-31 15:06:13.195 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/embeddings
+2026-05-31 15:06:13.196 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/embeddings
+2026-05-31 15:06:13.197 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/embeddings
+2026-05-31 15:06:13.199 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/embeddings
+2026-05-31 15:06:13.388 +08:00 [INF] Received HTTP response headers after 186.4356ms - 405
+2026-05-31 15:06:13.389 +08:00 [INF] End processing HTTP request after 193.271ms - 405
+2026-05-31 15:06:54.847 +08:00 [INF] Received HTTP response headers after 41646.2898ms - 405
+2026-05-31 15:06:54.891 +08:00 [INF] End processing HTTP request after 41696.6885ms - 405
+2026-05-31 15:06:56.080 +08:00 [INF] Executed action SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api) in 110365.2109ms
+2026-05-31 15:06:56.080 +08:00 [INF] Executed action SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api) in 117478.8022ms
+2026-05-31 15:06:56.082 +08:00 [INF] Executed endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 15:06:56.082 +08:00 [INF] Executed endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 15:06:56.085 +08:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 405 (Not Allowed).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetBatchEmbeddingsAsync(List`1 texts, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 39
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetEmbeddingAsync(String text, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 28
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 42
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 15:06:56.085 +08:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 405 (Not Allowed).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetBatchEmbeddingsAsync(List`1 texts, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 39
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetEmbeddingAsync(String text, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 28
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 42
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 15:06:56.098 +08:00 [ERR] 未处理异常: /api/search
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 405 (Not Allowed).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetBatchEmbeddingsAsync(List`1 texts, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 39
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetEmbeddingAsync(String text, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 28
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 42
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 15:06:56.103 +08:00 [ERR] 未处理异常: /api/search
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 405 (Not Allowed).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetBatchEmbeddingsAsync(List`1 texts, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 39
+   at SkuSearch.Infrastructure.Services.OpenAiEmbeddingService.GetEmbeddingAsync(String text, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\EmbeddingService.cs:line 28
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 42
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 15:06:56.122 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/search - 500 null application/json; charset=utf-8 110420.2443ms
+2026-05-31 15:06:56.131 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/search - 500 null application/json; charset=utf-8 117583.0609ms
+2026-05-31 15:08:41.457 +08:00 [INF] Now listening on: https://localhost:5001
+2026-05-31 15:08:41.497 +08:00 [INF] Now listening on: http://localhost:5000
+2026-05-31 15:08:41.556 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 15:08:41.565 +08:00 [INF] Hosting environment: Development
+2026-05-31 15:08:41.566 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 15:08:41.775 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - null null
+2026-05-31 15:08:41.918 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - 404 null null 146.3866ms
+2026-05-31 15:08:41.925 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5001/, Response status code: 404
+2026-05-31 15:08:53.467 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 15:08:53.476 +08:00 [INF] CORS policy execution successful.
+2026-05-31 15:08:53.480 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 15:08:53.502 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 15:08:57.313 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/chat/completions
+2026-05-31 15:08:57.316 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/chat/completions
+2026-05-31 15:08:57.499 +08:00 [INF] Received HTTP response headers after 181.2108ms - 405
+2026-05-31 15:08:57.501 +08:00 [INF] End processing HTTP request after 189.8081ms - 405
+2026-05-31 15:09:36.669 +08:00 [INF] Now listening on: https://localhost:5001
+2026-05-31 15:09:36.713 +08:00 [INF] Now listening on: http://localhost:5000
+2026-05-31 15:09:37.099 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 15:09:37.099 +08:00 [INF] Hosting environment: Development
+2026-05-31 15:09:37.100 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 15:09:37.257 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - null null
+2026-05-31 15:09:37.366 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - 404 null null 112.9796ms
+2026-05-31 15:09:37.371 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5001/, Response status code: 404
+2026-05-31 15:09:42.189 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 15:09:42.211 +08:00 [INF] CORS policy execution successful.
+2026-05-31 15:09:42.216 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 15:09:42.245 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 15:09:48.694 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/chat/completions
+2026-05-31 15:09:48.696 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/chat/completions
+2026-05-31 15:09:48.879 +08:00 [INF] Received HTTP response headers after 180.3626ms - 405
+2026-05-31 15:09:48.881 +08:00 [INF] End processing HTTP request after 189.6038ms - 405
+2026-05-31 15:10:59.370 +08:00 [INF] Now listening on: https://localhost:5001
+2026-05-31 15:10:59.405 +08:00 [INF] Now listening on: http://localhost:5000
+2026-05-31 15:10:59.472 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 15:10:59.475 +08:00 [INF] Hosting environment: Development
+2026-05-31 15:10:59.477 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 15:10:59.703 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - null null
+2026-05-31 15:10:59.849 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - 404 null null 150.5362ms
+2026-05-31 15:10:59.854 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5001/, Response status code: 404
+2026-05-31 15:11:03.259 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 15:11:03.273 +08:00 [INF] CORS policy execution successful.
+2026-05-31 15:11:03.276 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 15:11:03.301 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 15:11:06.974 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/api/paas/api/paas/v4/chat/completions
+2026-05-31 15:11:06.976 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/api/paas/api/paas/v4/chat/completions
+2026-05-31 15:11:07.173 +08:00 [INF] Received HTTP response headers after 194.4469ms - 404
+2026-05-31 15:11:07.175 +08:00 [INF] End processing HTTP request after 202.9756ms - 404
+2026-05-31 15:12:10.535 +08:00 [INF] Now listening on: https://localhost:5001
+2026-05-31 15:12:10.566 +08:00 [INF] Now listening on: http://localhost:5000
+2026-05-31 15:12:10.839 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 15:12:10.840 +08:00 [INF] Hosting environment: Development
+2026-05-31 15:12:10.841 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 15:12:11.085 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - null null
+2026-05-31 15:12:11.191 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - 404 null null 110.4287ms
+2026-05-31 15:12:11.197 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5001/, Response status code: 404
+2026-05-31 15:12:14.862 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 15:12:14.872 +08:00 [INF] CORS policy execution successful.
+2026-05-31 15:12:14.875 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 15:12:14.900 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 15:12:17.228 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/api/paas/v4/chat/completions
+2026-05-31 15:12:17.230 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/api/paas/v4/chat/completions
+2026-05-31 15:12:29.746 +08:00 [INF] Received HTTP response headers after 12512.7871ms - 200
+2026-05-31 15:12:29.748 +08:00 [INF] End processing HTTP request after 12521.8308ms - 200
+2026-05-31 15:13:00.399 +08:00 [INF] Now listening on: https://localhost:5001
+2026-05-31 15:13:00.442 +08:00 [INF] Now listening on: http://localhost:5000
+2026-05-31 15:13:00.494 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 15:13:00.495 +08:00 [INF] Hosting environment: Development
+2026-05-31 15:13:00.495 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 15:13:01.090 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - null null
+2026-05-31 15:13:01.214 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - 404 null null 128.0808ms
+2026-05-31 15:13:01.219 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5001/, Response status code: 404
+2026-05-31 15:13:04.650 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/search - application/json 34
+2026-05-31 15:13:04.657 +08:00 [INF] CORS policy execution successful.
+2026-05-31 15:13:04.663 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 15:13:04.686 +08:00 [INF] Route matched with {action = "Search", controller = "Search"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(SkuSearch.Application.DTOs.SearchRequest, System.Threading.CancellationToken) on controller SkuSearch.Api.Controllers.SearchController (SkuSearch.Api).
+2026-05-31 15:13:08.280 +08:00 [INF] Start processing HTTP request POST https://open.bigmodel.cn/api/paas/v4/chat/completions
+2026-05-31 15:13:08.283 +08:00 [INF] Sending HTTP request POST https://open.bigmodel.cn/api/paas/v4/chat/completions
+2026-05-31 15:13:16.728 +08:00 [INF] Received HTTP response headers after 8442.5662ms - 200
+2026-05-31 15:13:16.730 +08:00 [INF] End processing HTTP request after 8451.9018ms - 200
+2026-05-31 15:13:31.128 +08:00 [INF] AI 解析 [户外用品] → 关键词: 同义词:
+2026-05-31 15:14:05.303 +08:00 [INF] Executed action SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api) in 60611.72ms
+2026-05-31 15:14:05.305 +08:00 [INF] Executed endpoint 'SkuSearch.Api.Controllers.SearchController.Search (SkuSearch.Api)'
+2026-05-31 15:14:05.308 +08:00 [ERR] An unhandled exception has occurred while executing the request.
+System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.EntityFrameworkCore.Relational, Version=8.0.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60'. 系统找不到指定的文件。
+File name: 'Microsoft.EntityFrameworkCore.Relational, Version=8.0.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60'
+   at SkuSearch.Infrastructure.Repositories.MySqlKeywordSearchRepository.SearchAsync(ParsedQuery parsed, Int32 topK, Nullable`1 shopId, CancellationToken ct)
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+   at SkuSearch.Infrastructure.Repositories.MySqlKeywordSearchRepository.SearchAsync(ParsedQuery parsed, Int32 topK, Nullable`1 shopId, CancellationToken ct)
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 45
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 15:14:05.337 +08:00 [ERR] 未处理异常: /api/search
+System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.EntityFrameworkCore.Relational, Version=8.0.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60'. 系统找不到指定的文件。
+File name: 'Microsoft.EntityFrameworkCore.Relational, Version=8.0.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60'
+   at SkuSearch.Infrastructure.Repositories.MySqlKeywordSearchRepository.SearchAsync(ParsedQuery parsed, Int32 topK, Nullable`1 shopId, CancellationToken ct)
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+   at SkuSearch.Infrastructure.Repositories.MySqlKeywordSearchRepository.SearchAsync(ParsedQuery parsed, Int32 topK, Nullable`1 shopId, CancellationToken ct)
+   at SkuSearch.Application.Services.SearchService.SearchAsync(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Application\Services\SearchService.cs:line 45
+   at SkuSearch.Api.Controllers.SearchController.Search(SearchRequest req, CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\SearchController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-05-31 15:14:05.361 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/search - 500 null application/json; charset=utf-8 60711.8513ms
+2026-05-31 15:14:37.348 +08:00 [INF] Now listening on: https://localhost:5001
+2026-05-31 15:14:37.391 +08:00 [INF] Now listening on: http://localhost:5000
+2026-05-31 15:14:37.767 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 15:14:37.767 +08:00 [INF] Hosting environment: Development
+2026-05-31 15:14:37.768 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 15:14:37.890 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - null null
+2026-05-31 15:14:37.996 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - 404 null null 110.8774ms
+2026-05-31 15:14:38.000 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5001/, Response status code: 404
+2026-05-31 15:14:43.420 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger - null null
+2026-05-31 15:14:43.432 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger - 301 null null 11.9756ms
+2026-05-31 15:14:43.435 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null
+2026-05-31 15:14:43.498 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 63.6634ms
+2026-05-31 15:14:43.510 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/swagger-ui-standalone-preset.js - null null
+2026-05-31 15:14:43.510 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/swagger-ui-bundle.js - null null
+2026-05-31 15:14:43.510 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/swagger-ui.css - null null
+2026-05-31 15:14:43.550 +08:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-05-31 15:14:43.550 +08:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-05-31 15:14:43.553 +08:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-05-31 15:14:43.555 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/swagger-ui.css - 200 144929 text/css 44.5924ms
+2026-05-31 15:14:43.555 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/swagger-ui-bundle.js - 200 1061536 text/javascript 44.5909ms
+2026-05-31 15:14:43.555 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/swagger-ui-standalone-preset.js - 200 312163 text/javascript 44.5808ms
+2026-05-31 15:14:43.763 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null
+2026-05-31 15:14:43.763 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-31 15:14:43.770 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 14931 application/javascript; charset=utf-8 6.5747ms
+2026-05-31 15:14:43.798 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 35.7224ms
+2026-05-31 15:14:43.907 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null
+2026-05-31 15:14:43.920 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.3604ms
+2026-05-31 15:14:43.985 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/favicon-32x32.png - null null
+2026-05-31 15:14:43.986 +08:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-05-31 15:14:43.987 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/favicon-32x32.png - 200 628 image/png 2.9866ms
+2026-05-31 15:14:46.797 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/admin/index/rebuild - null 0
+2026-05-31 15:14:46.806 +08:00 [INF] CORS policy execution successful.
+2026-05-31 15:14:46.809 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.AdminController.RebuildIndex (SkuSearch.Api)'
+2026-05-31 15:14:46.823 +08:00 [INF] Route matched with {action = "RebuildIndex", controller = "Admin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RebuildIndex() on controller SkuSearch.Api.Controllers.AdminController (SkuSearch.Api).
+2026-05-31 15:14:47.092 +08:00 [INF] Executing AcceptedResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-31 15:14:47.102 +08:00 [INF] ===== 开始全量建立向量索引 =====
+2026-05-31 15:14:47.113 +08:00 [INF] Executed action SkuSearch.Api.Controllers.AdminController.RebuildIndex (SkuSearch.Api) in 282.9358ms
+2026-05-31 15:14:47.114 +08:00 [INF] Executed endpoint 'SkuSearch.Api.Controllers.AdminController.RebuildIndex (SkuSearch.Api)'
+2026-05-31 15:14:47.116 +08:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/admin/index/rebuild - 202 null application/json; charset=utf-8 319.3958ms
+2026-05-31 15:14:47.343 +08:00 [ERR] 索引构建失败
+Grpc.Core.RpcException: Status(StatusCode="Internal", Detail="Error starting gRPC call. HttpRequestException: The HTTP/2 server sent invalid data on the connection. HTTP/2 error code 'PROTOCOL_ERROR' (0x1). (HttpProtocolError) HttpProtocolException: The HTTP/2 server sent invalid data on the connection. HTTP/2 error code 'PROTOCOL_ERROR' (0x1). (HttpProtocolError)", DebugException="System.Net.Http.HttpRequestException: The HTTP/2 server sent invalid data on the connection. HTTP/2 error code 'PROTOCOL_ERROR' (0x1). (HttpProtocolError)")
+ ---> System.Net.Http.HttpRequestException: The HTTP/2 server sent invalid data on the connection. HTTP/2 error code 'PROTOCOL_ERROR' (0x1). (HttpProtocolError)
+ ---> System.Net.Http.HttpProtocolException: The HTTP/2 server sent invalid data on the connection. HTTP/2 error code 'PROTOCOL_ERROR' (0x1). (HttpProtocolError)
+   at System.Net.Http.Http2Connection.ThrowRequestAborted(Exception innerException)
+   at System.Net.Http.Http2Connection.Http2Stream.SendDataAsync(ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+   at Grpc.Net.Client.Internal.StreamExtensions.WriteMessageAsync[TMessage](Stream stream, GrpcCall call, TMessage message, Action`2 serializer, CallOptions callOptions)
+   at Grpc.Net.Client.Internal.PushUnaryContent`2.WriteMessageCore(Task writeMessageTask)
+   at System.Net.Http.Http2Connection.Http2Stream.SendRequestBodyAsync(CancellationToken cancellationToken)
+   at System.Net.Http.Http2Connection.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.Http2Connection.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at Grpc.Net.Client.Balancer.Internal.BalancerHttpHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpMessageInvoker.<SendAsync>g__SendAsyncWithTelemetry|6_0(HttpMessageHandler handler, HttpRequestMessage request, CancellationToken cancellationToken)
+   at Grpc.Net.Client.Internal.GrpcCall`2.RunCall(HttpRequestMessage request, Nullable`1 timeout)
+   --- End of inner exception stack trace ---
+   at Qdrant.Client.QdrantClient.ListCollectionsAsync(CancellationToken cancellationToken)
+   at SkuSearch.Infrastructure.Services.IndexingService.EnsureCollectionAsync(Boolean recreate) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\IndexingService.cs:line 208
+   at SkuSearch.Infrastructure.Services.IndexingService.BuildFullIndexAsync(CancellationToken ct) in D:\GitRepository\OpenClawTest\OpenClawTest\src\Infrastructure\Services\IndexingService.cs:line 42
+   at SkuSearch.Api.Controllers.AdminController.<>c__DisplayClass5_0.<<RebuildIndex>b__0>d.MoveNext() in D:\GitRepository\OpenClawTest\OpenClawTest\src\Api\Controllers\AdminController.cs:line 45
+2026-05-31 15:15:00.261 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/api/admin/index/status - null null
+2026-05-31 15:15:00.265 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.AdminController.GetIndexStatus (SkuSearch.Api)'
+2026-05-31 15:15:00.271 +08:00 [INF] Route matched with {action = "GetIndexStatus", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetIndexStatus() on controller SkuSearch.Api.Controllers.AdminController (SkuSearch.Api).
+2026-05-31 15:15:00.355 +08:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType3`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-31 15:15:00.358 +08:00 [INF] Executed action SkuSearch.Api.Controllers.AdminController.GetIndexStatus (SkuSearch.Api) in 84.4128ms
+2026-05-31 15:15:00.361 +08:00 [INF] Executed endpoint 'SkuSearch.Api.Controllers.AdminController.GetIndexStatus (SkuSearch.Api)'
+2026-05-31 15:15:00.361 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/api/admin/index/status - 503 null application/json; charset=utf-8 100.8262ms
+2026-05-31 15:15:50.839 +08:00 [INF] Now listening on: https://localhost:5001
+2026-05-31 15:15:50.875 +08:00 [INF] Now listening on: http://localhost:5000
+2026-05-31 15:15:51.208 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 15:15:51.209 +08:00 [INF] Hosting environment: Development
+2026-05-31 15:15:51.210 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 15:15:51.684 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - null null
+2026-05-31 15:15:51.807 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - 404 null null 129.6733ms
+2026-05-31 15:15:51.816 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5001/, Response status code: 404
+2026-05-31 15:15:54.075 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null
+2026-05-31 15:15:54.144 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 68.4241ms
+2026-05-31 15:15:54.230 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-31 15:15:54.230 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null
+2026-05-31 15:15:54.236 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 14931 application/javascript; charset=utf-8 6.0563ms
+2026-05-31 15:15:54.266 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 35.4767ms
+2026-05-31 15:15:54.405 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null
+2026-05-31 15:15:54.421 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 16.2072ms
+2026-05-31 15:15:56.382 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/admin/index/rebuild - null 0
+2026-05-31 15:15:56.390 +08:00 [INF] CORS policy execution successful.
+2026-05-31 15:15:56.392 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.AdminController.RebuildIndex (SkuSearch.Api)'
+2026-05-31 15:15:56.415 +08:00 [INF] Route matched with {action = "RebuildIndex", controller = "Admin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RebuildIndex() on controller SkuSearch.Api.Controllers.AdminController (SkuSearch.Api).
+2026-05-31 15:15:56.698 +08:00 [INF] ===== 开始全量建立向量索引 =====
+2026-05-31 15:15:56.698 +08:00 [INF] Executing AcceptedResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-31 15:15:56.713 +08:00 [INF] Executed action SkuSearch.Api.Controllers.AdminController.RebuildIndex (SkuSearch.Api) in 291.2045ms
+2026-05-31 15:15:56.714 +08:00 [INF] Executed endpoint 'SkuSearch.Api.Controllers.AdminController.RebuildIndex (SkuSearch.Api)'
+2026-05-31 15:15:56.717 +08:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/admin/index/rebuild - 202 null application/json; charset=utf-8 335.2635ms
+2026-05-31 15:15:57.201 +08:00 [INF] Qdrant 集合创建成功: sku_vectors (维度=1536)
+2026-05-31 15:17:06.115 +08:00 [INF] Now listening on: https://localhost:5001
+2026-05-31 15:17:06.201 +08:00 [INF] Now listening on: http://localhost:5000
+2026-05-31 15:17:06.271 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-31 15:17:06.271 +08:00 [INF] Hosting environment: Development
+2026-05-31 15:17:06.272 +08:00 [INF] Content root path: D:\GitRepository\OpenClawTest\OpenClawTest\src\Api
+2026-05-31 15:17:06.802 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - null null
+2026-05-31 15:17:06.923 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - 404 null null 126.8201ms
+2026-05-31 15:17:06.928 +08:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:5001/, Response status code: 404
+2026-05-31 15:17:22.170 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/index.html - null null
+2026-05-31 15:17:22.243 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/index.html - 200 null text/html;charset=utf-8 72.7596ms
+2026-05-31 15:17:22.362 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - null null
+2026-05-31 15:17:22.362 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-31 15:17:22.369 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - 200 14931 application/javascript; charset=utf-8 7.7123ms
+2026-05-31 15:17:22.396 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - 200 null text/javascript; charset=UTF-8 34.2149ms
+2026-05-31 15:17:22.494 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - null null
+2026-05-31 15:17:22.510 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 16.2354ms
+2026-05-31 15:17:25.277 +08:00 [INF] Request starting HTTP/2 POST https://localhost:5001/api/admin/index/rebuild - null 0
+2026-05-31 15:17:25.285 +08:00 [INF] CORS policy execution successful.
+2026-05-31 15:17:25.288 +08:00 [INF] Executing endpoint 'SkuSearch.Api.Controllers.AdminController.RebuildIndex (SkuSearch.Api)'
+2026-05-31 15:17:25.301 +08:00 [INF] Route matched with {action = "RebuildIndex", controller = "Admin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RebuildIndex() on controller SkuSearch.Api.Controllers.AdminController (SkuSearch.Api).
+2026-05-31 15:17:25.575 +08:00 [INF] ===== 开始全量建立向量索引 =====
+2026-05-31 15:17:25.576 +08:00 [INF] Executing AcceptedResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-31 15:17:25.588 +08:00 [INF] Executed action SkuSearch.Api.Controllers.AdminController.RebuildIndex (SkuSearch.Api) in 282.8938ms
+2026-05-31 15:17:25.589 +08:00 [INF] Executed endpoint 'SkuSearch.Api.Controllers.AdminController.RebuildIndex (SkuSearch.Api)'
+2026-05-31 15:17:25.591 +08:00 [INF] Request finished HTTP/2 POST https://localhost:5001/api/admin/index/rebuild - 202 null application/json; charset=utf-8 314.5319ms
+2026-05-31 15:17:25.827 +08:00 [INF] 集合已存在，增量更新模式: sku_vectors
