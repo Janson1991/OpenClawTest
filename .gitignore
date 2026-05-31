@@ -16,3 +16,4 @@ memory/
 *.user
 .vs/
 /OpenClawTest/frontend/sku-search-vue/node_modules
+/ProductSelector/Frontend/package-lock.json
